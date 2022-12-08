@@ -2,6 +2,8 @@
 import pandas as pd
 from collections import Counter
 from nltk import ngrams
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
 
 
 def most_common(df:pd.DataFrame,column:str,n_grams:int=1,limit:int=10,ignore:list=[]) -> pd.Series:
@@ -49,3 +51,41 @@ def plot_token_frequency(tokens:pd.Series,title=None,fig_size=(5,4)):
     """
     title = 'Tokens' if title is None else title
     tokens.plot.barh(figsize=fig_size,title=title)
+
+
+def wordcloud_from_column(df:pd.DataFrame,column:str,maxfont:int=40,ignore:list=[]):
+    """
+    It generates a wordcloud visualisation from the dataframe column (values must be strings)
+    source: https://amueller.github.io/word_cloud/auto_examples/simple.html
+
+    Arguments
+
+        df: pd.DataFrame
+            dataframe containing text to analyse
+
+        column: str
+            target column name (from df) with text content
+        
+        maxfont: int, default 40
+            maximum font to use in visualisation, if set to None it will be generated from frequencies
+        
+        ignore: list, default []
+            list of words to ignore
+    
+    """
+    # to do example coloured by group: https://amueller.github.io/word_cloud/auto_examples/colored_by_group.html
+
+    text = ' '.join(df[column]).lower()
+    
+    for word in ignore:
+        text = text.replace(' '+ word + ' ',' ')
+    # tokens =  pd.Series(' '.join(df[column]).lower().split())
+
+    # Generate a word cloud image
+    wordcloud = WordCloud().generate(text)
+
+    wordcloud = WordCloud(max_font_size=maxfont).generate(text)
+    plt.figure()
+    plt.imshow(wordcloud, interpolation="bilinear")
+    plt.axis("off")
+    plt.show()
