@@ -1,0 +1,60 @@
+% Template:     Reporte LaTeX
+% Documento:    Archivo principal
+% Versión:      3.2.2 (12/03/2023)
+% Codificación: UTF-8
+%
+% Autor: Pablo Pizarro R.
+%        pablo@ppizarror.com
+%
+% Manual template: [https://latex.ppizarror.com/reporte]
+% Licencia MIT:    [https://opensource.org/licenses/MIT]
+
+% CREACIÓN DEL DOCUMENTO
+\documentclass[
+	spanish, % Idioma: spanish, english, etc.
+	letterpaper, oneside
+]{article}
+
+% INFORMACIÓN DEL DOCUMENTO
+\def\documenttitle {Título del reporte}
+\def\documentsubtitle {}
+\def\documentsubject {Tema a tratar}
+\def\documentdate {\today}
+
+\def\documentauthor {Camilo Carvajal Reyes}
+\def\coursename {Área de Humanidades}
+\def\coursecode {}
+
+\def\universityname {Universidad de Chile}
+\def\universityfaculty {Facultad de Ciencias Físicas y Matemáticas}
+\def\universitydepartment {Departamento de Ingeniería Matemática}
+\def\universitydepartmentimage {departamentos/logo_ethics3}
+\def\universitylocation {Santiago de Chile}
+
+% IMPORTACIÓN DEL TEMPLATE
+\input{template}
+
+% INICIO DE PÁGINAS
+\begin{document}
+	
+% CONFIGURACIÓN DE PÁGINA Y ENCABEZADOS
+\templatePagecfg
+
+% CONFIGURACIONES FINALES
+\templateFinalcfg
+
+% ======================= INICIO DEL DOCUMENTO =======================
+
+% Título y nombre del autor
+\inserttitle
+
+% Resumen o Abstract
+\begin{abstract}
+	\lipsum[11]
+\end{abstract}
+
+% Ejemplo, se puede borrar
+\input{example}
+
+% FIN DEL DOCUMENTO
+\end{document}

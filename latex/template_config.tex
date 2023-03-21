@@ -1,0 +1,301 @@
+% Template:     Reporte LaTeX
+% Documento:    Configuraciones del template
+% Versión:      3.2.2 (12/03/2023)
+% Codificación: UTF-8
+%
+% Autor: Pablo Pizarro R.
+%        pablo@ppizarror.com
+%
+% Manual template: [https://latex.ppizarror.com/reporte]
+% Licencia MIT:    [https://opensource.org/licenses/MIT]
+
+% CONFIGURACIONES GENERALES
+\def\documentfontsize {11}         % Tamaño de la fuente del documento [pt]
+\def\documentinterline {1.025}     % Interlineado del documento [factor]
+\def\documentparindent {15}        % Tamaño del indentado de párrafos [pt]
+\def\documentparskip {0}           % Tamaño adicional entre párrafos (+/-) [pt]
+\def\fontdocument {lmodern}        % Tipografía base, ver soportadas en manual
+\def\fonttypewriter {tmodern}      % Tipografía de \texttt, ver manual
+\def\fonturl {same}                % Tipo de fuente url {tt,sf,rm,same}
+\def\graphicxdraft {false}         % En true no carga las imágenes (modo draft)
+\def\indentfirstpar {false}        % Obliga la indentación del primer párrafo
+\def\pointdecimal {true}           % N° decimales con punto en vez de coma
+\def\showlayoutlines {false}       % Muestra el layout de la página
+\def\showlinenumbers {false}       % Muestra los números de línea del documento
+\def\twopagesclearformat {blank}   % Formato nueva página twoside {blank,empty}
+
+% ESTILO PORTADA Y HEADER-FOOTER
+\def\disablehfrightmark {false}    % Desactiva el rightmark del header-footer
+\def\hfstyle {style3}              % Estilo header-footer (16 estilos)
+\def\hfwidthcourse {0.35}          % Tamaño máximo del curso en header-footer
+\def\hfwidthtitle {0.6}            % Tamaño máximo del título en header-footer
+\def\hfwidthwrap {false}           % Activa el tamaño máximo en header-footer
+\def\titlefontsize {\Large}        % Tamaño del título principal
+\def\titlefontstyle {\normalfont}  % Estilo del título principal
+\def\titlelinemargin {1.5em}       % Margen líneas del título principal
+\def\titleshowauthor {true}        % Muestra el autor en el título principal
+\def\titleshowcourse {false}       % Muestra el curso en el título principal
+\def\titleshowdate {true}          % Muestra la fecha en el título principal
+\def\titlesupmargin {2em}          % Margen superior del título principal
+
+% CONFIGURACIÓN DE LAS LEYENDAS - CAPTION
+\def\captionalignment {justified}  % Posición {centered,justified,left,right}
+\def\captionfontsize {small}       % Tamaño de fuente de los caption
+\def\captionlabelformat {simple}   % Formato leyenda {empty,simple,parens}
+\def\captionlabelsep {colon}       % Sep. {none,colon,period,space,quad,newline}
+\def\captionlessmarginimage {0.1}  % Margen sup/inf de figura sin leyenda [cm]
+\def\captionlrmargin {2}           % Márgenes izq/der de la leyenda [cm]
+\def\captionlrmarginmc {1}         % Margen izq/der leyenda dentro de cols. [cm]
+\def\captionmarginimage {0}        % Margen vertical entre caption e imagen [cm]
+\def\captionmarginimages {0}       % Margen vertical entre caption e images [cm]
+\def\captionmarginimagesmc {0}     % Margen vert. entre caption e imagesmc [cm]
+\def\captionmarginmultimg {0}      % Margen izq/der leyendas múltiple img [cm]
+\def\captionnumcode {arabic}       % N° código {arabic,alph,Alph,roman,Roman}
+\def\captionnumequation {arabic}   % N° ecuac. {arabic,alph,Alph,roman,Roman}
+\def\captionnumfigure {arabic}     % N° figuras {arabic,alph,Alph,roman,Roman}
+\def\captionnumsubfigure {alph}    % N° subfigs. {arabic,alph,Alph,roman,Roman}
+\def\captionnumsubtable {alph}     % N° subtabla {arabic,alph,Alph,roman,Roman}
+\def\captionnumtable {arabic}      % N° tabla {arabic,alph,Alph,roman,Roman}
+\def\captionsubchar {.}            % Carácter entre N° objeto - subfigura/tabla
+\def\captiontbmarginfigure {9.35}  % Margen sup/inf de leyenda en figuras [pt]
+\def\captiontbmargintable {7}      % Margen sup/inf de la leyenda en tablas [pt]
+\def\captiontextbold {false}       % Etiqueta (código,figura,tabla) en negrita
+\def\captiontextsubnumbold {false} % N° subfigura/subtabla en negrita
+\def\codecaptiontop {true}         % Leyenda arriba del código fuente
+\def\equationcaptioncenter {true}  % Ecuaciones están centradas o justificadas
+\def\figurecaptiontop {false}      % Leyenda arriba de las imágenes
+\def\marginaligncaptbottom {0.1}   % Margen inferior caption en align [cm]
+\def\marginaligncapttop {-0.75}    % Margen superior caption en align [cm]
+\def\marginalignedcaptbottom {0.1} % Margen inferior caption en aligned [cm]
+\def\marginalignedcapttop {-0.75}  % Margen superior caption en aligned [cm]
+\def\margineqncaptionbottom {0}    % Margen inferior caption ecuación [cm]
+\def\margineqncaptiontop {-0.7}    % Margen superior caption ecuación [cm]
+\def\margingathercaptbottom {0.1}  % Margen inferior caption en gather [cm]
+\def\margingathercapttop {-0.9}    % Margen superior caption en gather [cm]
+\def\margingatheredcaptbottom{0.1} % Margen inferior caption en gathered [cm]
+\def\margingatheredcapttop {-0.7}  % Margen superior caption en gathered [cm]
+\def\sectioncaptiondelimiter {.}   % Carácter delimitador n° objeto y sección
+\def\showsectioncaptioncode {none} % N° sec código {none,chap,(s/ss/sss/ssss)ec}
+\def\showsectioncaptioneqn {none}  % N° sec ecuac. {none,chap,(s/ss/sss/ssss)ec}
+\def\showsectioncaptionfig {none}  % N° sec figs. {none,chap,(s/ss/sss/ssss)ec}
+\def\showsectioncaptionmat {none}  % N° matemático {none,chap,(s/ss/sss/ssss)ec}
+\def\showsectioncaptiontab {none}  % N° sec tablas {none,chap,(s/ss/sss/ssss)ec}
+\def\subcaptionfsize{footnotesize} % Tamaño de la fuente de los subcaption
+\def\subcaptionlabelformat{parens} % Formato leyenda sub. {empty,simple,parens}
+\def\subcaptionlabelsep {space}    % Sep. {none,colon,period,space,quad,newline}
+\def\tablecaptiontop {true}        % Leyenda arriba de las tablas
+
+% ANEXO, CITAS, REFERENCIAS
+\def\apacitebothers {et al.}       % Etiqueta usada en (y otros) con \shortcite
+\def\apaciterefcitecharclose {]}   % Carácter final cita apacite
+\def\apaciterefcitecharopen {[}    % Carácter inicial cita apacite
+\def\apaciterefnumber {false}      % Lista de referencias con números
+\def\apaciterefsep {5}             % Separación entre refs. {apacite} [pt]
+\def\apaciteshowurl {false}        % Muestra las url en las referencias
+\def\apacitestyle {apacite}        % Formato refs. apacite {apa,ieeetr,etc..}
+\def\appendixindepobjnum {true}    % Anexo usa n° objetos independientes
+\def\backrefpagecite {false}       % Las citas en bibliografía poseen nº de pag.
+\def\bibtexenvrefsecnum {false}    % Entorno references es una sección numerada
+\def\bibtexrefsep {5}              % Separación entre refs. {bibtex} [pt]
+\def\bibtexstyle {ieeetr}          % Formato refs. bibtex {apa,ieeetr,etc...}
+\def\bibtextextalign {justify}     % Alineac. bibtex {justify,left,right,center}
+\def\fontsizerefbibl {\normalsize} % Tamaño fuente al usar \bibliography{file}
+\def\natbibrefcitecharclose {]}    % Carácter final cita natbib
+\def\natbibrefcitecharopen {[}     % Carácter inicial cita natbib
+\def\natbibrefcitecompress {true}  % Comprime refererencias al citar
+\def\natbibrefcitesepcomma {true}  % Separador en coma (,) o punto y coma (;)
+\def\natbibrefcitetype {numbers}   % Tipo citación {authoryear,numbers,super}
+\def\natbibrefsep {5}              % Separación entre referencia {natbib} [pt]
+\def\natbibrefstyle {natnumurl}    % Formato refs. natbib {apa,ieeetr,etc...}
+\def\stylecitereferences {natbib}  % Estilo refs. {apacite,bibtex,natbib,custom}
+\def\twocolumnreferences {false}   % Referencias en dos columnas
+
+% CONFIGURACIONES DE OBJETOS
+\def\animatedimageautoplay {true}  % Autoplay en imágenes animadas
+\def\animatedimagecontrols {false} % Muestra los controles en imágenes animadas
+\def\animatedimageloop {true}      % Hace loops en imágenes animadas
+\def\columnsepwidth {2.1}          % Separación entre columnas [em]
+\def\defaultimagefolder {img/}     % Carpeta raíz de las imágenes
+\def\equationleftalign {false}     % Ecuaciones alineadas a la izquierda
+\def\equationrestart {none}        % Reinicio n° {none,chap,(s/ss/sss/ssss)ec}
+\def\footnotelmargin {10}          % Margen entre footnote y el número [pt]
+\def\footnoterestart {none}        % N° foot. {none,chap,page,(s/ss/sss/ssss)ec}
+\def\footnoterulefigure {false}    % Footnote en figuras tienen línea superior
+\def\footnoterulepage {false}      % Footnote en páginas tienen línea superior
+\def\footnoteruletable {false}     % Footnote en tablas tienen línea superior
+\def\footnotetwocolumn {false}     % Footnote en dos columnas
+\def\fpremovetopbottomcenter{true} % Elimina espacio vert. al centrar con b!,t!
+\def\hfpdashcharstyle {--}         % Estilo guión en portadas,header-footer,etc
+\def\imagedefaultplacement {H}     % Posición por defecto de las imágenes
+\def\marginalignbottom {-0.4}      % Margen inferior entorno align [cm]
+\def\marginalignedbottom {-0.2}    % Margen inferior entorno aligned [cm]
+\def\marginalignedtop {-0.4}       % Margen superior entorno aligned [cm]
+\def\marginaligntop {-0.4}         % Margen superior entorno align [cm]
+\def\marginequationbottom {-0.2}   % Margen inferior ecuaciones [cm]
+\def\marginequationtop {0}         % Margen superior ecuaciones [cm]
+\def\marginfloatimages {-13}       % Margen sup figs. insertimageleft/right [pt]
+\def\margingatherbottom {-0.2}     % Margen inferior entorno gather [cm]
+\def\margingatheredbottom {-0.1}   % Margen inferior entorno gathered [cm]
+\def\margingatheredtop {-0.4}      % Margen superior entorno gathered [cm]
+\def\margingathertop {-0.4}        % Margen superior entorno gather [cm]
+\def\marginimagebottom {-0.15}     % Margen inferior figura [cm]
+\def\marginimagemultbottom {0.25}  % Margen inferior imágenes múltiples [cm]
+\def\marginimagemultright {0.5}    % Margen derecho imágenes múltiples [cm]
+\def\marginimagemulttop {-0.3}     % Margen superior imágenes múltiples [cm]
+\def\marginimagetop {0}            % Margen superior figuras [cm]
+\def\marginlinenumbers {7.5}       % Margen izquierdo (\showlinenumbers) [pt]
+\def\numberedequation {true}       % Ecuaciones con \insert... numeradas
+\def\senumerti {\arabic{enumi}.}   % Estilo enumerate nivel 1
+\def\senumertii {\alph{enumii})}   % Estilo enumerate nivel 2
+\def\senumertiii{\roman{enumiii}.} % Estilo enumerate nivel 3
+\def\senumertiv {\Alph{enumiv})}   % Estilo enumerate nivel 4
+\def\sitemizei {\iitembcirc}       % Estilo itemize nivel 1
+\def\sitemizeii {\iitemdash}       % Estilo itemize nivel 2
+\def\sitemizeiii {\iitemcirc}      % Estilo itemize nivel 3
+\def\sitemizeiv {\iitembsquare}    % Estilo itemize nivel 4
+\def\sitemsmargini {25}            % Margen ítems nivel 1 [pt]
+\def\sitemsmarginii {22}           % Margen ítems nivel 2 [pt]
+\def\sitemsmarginiii {18.7}        % Margen ítems nivel 3 [pt]
+\def\sitemsmarginiv {17}           % Margen ítems nivel 4 [pt]
+\def\sourcecodebgmarginbottom {0}  % Margen inferior del bloque de color [pt]
+\def\sourcecodebgmarginleft {0}    % Margen izquierdo del bloque de color [pt]
+\def\sourcecodebgmarginright {0}   % Margen derecho del bloque de color [pt]
+\def\sourcecodebgmargintop {0}     % Margen superior del bloque de color [pt]
+\def\sourcecodefontf {\ttfamily}   % Tipo de letra código fuente
+\def\sourcecodefonts {\small}      % Tamaño letra código fuente
+\def\sourcecodeilfontf {\ttfamily} % Tipo de letra código fuente inline
+\def\sourcecodeilfonts {\small}    % Tamaño letra código fuente inline
+\def\sourcecodenumbersep {6}       % Separación entre número línea y código [pt]
+\def\sourcecodenumbersize {\tiny}  % Tamaño fuente número línea
+\def\sourcecodeskipabove {0.75}    % Espacio sobre recuadro código [em]
+\def\sourcecodeskipbelow {0.95}    % Espacio bajo recuadro código [em]
+\def\sourcecodetabsize {3}         % Tamaño tabulación código fuente
+\def\tabledefaultplacement {H}     % Posición por defecto de las tablas
+\def\tablenotesameline {true}      % Notas en tablas en una sola línea
+\def\tablenotesfontsize {\small}   % Tamaño de fuente de las notas en tablas
+\def\tablepaddingh {0.75}          % Espaciado horizontal de celda de las tablas
+\def\tablepaddingv {1.15}          % Espaciado vertical de celda de las tablas
+\def\tikzdefaultplacement {H}      % Posición por defecto de las figuras tikz
+
+% CONFIGURACIÓN DE LOS TÍTULOS
+\def\anumsecaddtocounter {false}   % Insertar títulos anum. aumenta n° de sec
+\def\charaftersectionnum {.}       % Carácter después n° (s/ss/sss/ssss)ection
+\def\charappendixsection {.}       % Carácter entre n° sección anexo y título
+\def\charbetwchaptersection {.}    % Carácter entre nº capítulo y sección
+\def\charbetwsectionsubsection {.} % Carácter entre nº sección y subsección
+\def\charbetwssectionsssect {.}    % Carácter entre nº subsubsección y sssección
+\def\charbetwsubsectionssect {.}   % Carácter entre nº subsección y ssección
+\def\formatnumapchapter {\arabic}  % Formato nº capítulo en appendixd
+\def\formatnumapsection {\Alph}    % Formato nº sección en appendixd
+\def\formatnumapssection {\arabic} % Formato nº subsección en appendixd
+\def\formatnumapsssection{\arabic} % Formato nº sub-subsección en appendixd
+\def\formatnumapssssection{\arabic}% Formato nº sub-sub-subsección appendixd
+\def\formatnumchapter {\arabic}    % Formato número capítulo
+\def\formatnumsection {\arabic}    % Formato número sección
+\def\formatnumssection {\arabic}   % Formato número subsección
+\def\formatnumsssection {\arabic}  % Formato número sub-subsección
+\def\formatnumssssection {\arabic} % Formato número sub-sub-subsección
+\def\paragfontsize {\normalsize}   % Tamaño fuente paragraph
+\def\paragfontstyle {\bfseries}    % Estilo fuente paragraph
+\def\paragspacingbottom {4}        % Espaciado inferior en paragraph [pt]
+\def\paragspacingleft {0}          % Espaciado izq. en paragraph [pt]
+\def\paragspacingtop {8}           % Espaciado superior en paragraph [pt]
+\def\paragsubfontsize{\normalsize} % Tamaño fuente subparagraph
+\def\paragsubfontstyle {\bfseries} % Estilo fuente subparagraph
+\def\paragsubspacingbottom {4}     % Espaciado inferior en subparagraph [pt]
+\def\paragsubspacingleft {0}       % Espaciado izq. en subparagraph [pt]
+\def\paragsubspacingtop {8}        % Espaciado superior en subparagraph [pt]
+\def\sectionfontsize {\Large}      % Tamaño fuente section
+\def\sectionfontstyle {\bfseries}  % Estilo fuente section
+\def\sectionspacingbottom {10}     % Espaciado inferior en section [pt]
+\def\sectionspacingleft {0}        % Espaciado izq. en section [pt]
+\def\sectionspacingtop {20}        % Espaciado superior en section [pt]
+\def\spacingaftersection {\quad}   % Espaciador después nº sección
+\def\ssectionfontsize {\large}     % Tamaño fuente subtítulos
+\def\ssectionfontstyle {\bfseries} % Estilo fuente subsection
+\def\ssectionspacingbottom {10}    % Espaciado inferior en subsection [pt]
+\def\ssectionspacingleft {0}       % Espaciado izq. en subsection [pt]
+\def\ssectionspacingtop {12}       % Espaciado superior en subsection [pt]
+\def\sssectionfontsize{\normalsize}% Tamaño fuente subsubsection
+\def\sssectionfontstyle{\bfseries} % Estilo fuente subsubsection
+\def\sssectionspacingbottom {8}    % Espaciado inferior en subsubsection [pt]
+\def\sssectionspacingleft {0}      % Espaciado izq. en subsubsection [pt]
+\def\sssectionspacingtop {10}      % Espaciado superior en subsubsection [pt]
+\def\ssssectionfontstyle{\bfseries}% Estilo fuente subsubsubsection
+\def\ssssectionfontsz{\normalsize} % Tamaño fuente subsubsubsection
+\def\ssssectionspacingbottom {6}   % Espaciado inferior en subsubsubsection [pt]
+\def\ssssectionspacingleft {0}     % Espaciado izq. en subsubsubsection [pt]
+\def\ssssectionspacingtop {8}      % Espaciado superior en subsubsubsection [pt]
+
+% CONFIGURACIÓN DE LOS COLORES DEL DOCUMENTO
+\def\captioncolor {black}          % Color nombre objeto (código,figura,tabla)
+\def\captiontextcolor {black}      % Color de la leyenda
+\def\enumerateitemcolor {black}    % Color de los enumerate por defecto
+\def\highlightcolor {yellow}       % Color del subrayado con \hl
+\def\itemizeitemcolor {black}      % Color de los ítems por defecto
+\def\linenumbercolor {gray}        % Color del n° de línea (\showlinenumbers)
+\def\linkcolor {black}             % Color de los links del documento
+\def\maintextcolor {black}         % Color principal del texto
+\def\numcitecolor {black}          % Color del n° de las referencias o citas
+\def\pagescolor {white}            % Color de la página
+\def\paragcolor {black}            % Color de los paragraph
+\def\paragsubcolor {black}         % Color de los subparagraph
+\def\sectioncolor {black}          % Color de los section
+\def\showborderonlinks {false}     % Color de un link por un recuadro de color
+\def\sourcecodebgcolor {lgray}     % Color de fondo del código fuente
+\def\ssectioncolor {black}         % Color de los subsection
+\def\sssectioncolor {black}        % Color de los subsubsection
+\def\ssssectioncolor {black}       % Color de los subsubsubsection
+\def\tablelinecolor {black}        % Color de las líneas de las tablas
+\def\tablerowfirstcolor {none}     % Primer color de celda de las tablas
+\def\tablerowsecondcolor {gray!20} % Segundo color de celda de las tablas
+\def\urlcolor {magenta}            % Color de los enlaces web (\href,\url)
+
+% MÁRGENES DE PÁGINA
+\def\pagemarginbottom {2.5}        % Margen inferior página [cm]
+\def\pagemarginleft {3.81}         % Margen izquierdo página [cm]
+\def\pagemarginright {3.81}        % Margen derecho página [cm]
+\def\pagemargintop {2.5}           % Margen superior página [cm]
+
+% OPCIONES DEL PDF COMPILADO
+\def\cfgbookmarksopenlevel {1}     % Nivel marcadores en pdf (1:secciones)
+\def\cfgpdfbookmarkopen {true}     % Expande marcadores del nivel configurado
+\def\cfgpdfcenterwindow {true}     % Centra ventana del lector al abrir el pdf
+\def\cfgpdfcopyright {}            % Establece el copyright del documento
+\def\cfgpdfdisplaydoctitle {true}  % Muestra título del informe en visor
+\def\cfgpdffitwindow {false}       % Ajusta la ventana del lector tamaño pdf
+\def\cfgpdfkeywords {}             % Palabras clave del pdf
+\def\cfgpdflayout {OneColumn}      % Modo de página {OneColumn,SinglePage}
+\def\cfgpdfmenubar {true}          % Muestra el menú del lector
+\def\cfgpdfpageview {FitH}         % {Fit,FitH,FitV,FitR,FitB,FitBH,FitBV}
+\def\cfgpdfsecnumbookmarks {true}  % Número de la sec. en marcadores del pdf
+\def\cfgpdftoolbar {true}          % Muestra barra de herramientas lector pdf
+\def\cfgshowbookmarkmenu {false}   % Muestra menú marcadores al abrir el pdf
+\def\indexdepth {4}                % Profundidad de los marcadores
+\def\pdfcompilecompression {9}     % Factor de compresión del pdf (0-9)
+\def\pdfcompileobjcompression {2}  % Nivel compresión objetos del pdf (0-3)
+\def\pdfcompileversion {7}         % Versión mínima del pdf compilado
+\def\usepdfmetadata {true}         % Añade metadatos al pdf compilado
+
+% NOMBRE DE OBJETOS
+\def\nameabstract {Resumen}           % Nombre del resumen-abstract
+\def\nameappendixsection {Anexos}     % Nombre de los anexos
+\def\namechapter {Capítulo}           % Nombre de los capítulos
+\def\nameltappendixsection {Anexo}    % Etiqueta sección en anexo/apéndices
+\def\nameltcont{Índice de Contenidos} % Nombre del índice de contenidos
+\def\namelteqn {Índice de Ecuaciones} % Nombre de la lista de ecuaciones
+\def\nameltfigure {Índice de Figuras} % Nombre de la lista de figuras
+\def\nameltsrc {Índice de Códigos}    % Nombre de la lista de código
+\def\namelttable {Índice de Tablas}   % Nombre de la lista de tablas
+\def\nameltwfigure {Figura}           % Etiqueta leyenda de las figuras
+\def\nameltwsrc {Código}              % Etiqueta leyenda del código fuente
+\def\nameltwtable {Tabla}             % Etiqueta leyenda de las tablas
+\def\namemathcol {Corolario}          % Nombre de los colorarios
+\def\namemathdefn {Definición}        % Nombre de las definiciones
+\def\namemathej {Ejemplo}             % Nombre de los ejemplos
+\def\namemathlem {Lema}               % Nombre de los lemas
+\def\namemathobs {Observación}        % Nombre de las observaciones
+\def\namemathprp {Proposición}        % Nombre de las proposiciones
+\def\namemaththeorem {Teorema}        % Nombre de los teoremas
+\def\namepageof { de }                % Etiqueta página # de #
+\def\namereferences {Referencias}     % Nombre de la sección de referencias
