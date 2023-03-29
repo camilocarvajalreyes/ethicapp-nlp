@@ -1,0 +1,111 @@
+% Template:     Reporte LaTeX
+% Documento:    Archivo principal
+% Versión:      3.2.2 (12/03/2023)
+% Codificación: UTF-8
+%
+% Autor: Pablo Pizarro R.
+%        pablo@ppizarror.com
+%
+% Manual template: [https://latex.ppizarror.com/reporte]
+% Licencia MIT:    [https://opensource.org/licenses/MIT]
+
+% CREACIÓN DEL DOCUMENTO
+\documentclass[
+	spanish, % Idioma: spanish, english, etc.
+	letterpaper, oneside
+]{article}
+
+% INFORMACIÓN DEL DOCUMENTO
+\def\documenttitle {\textbf{Proposición de trabajo} \\ Procesamiento de datos textuales EthicApp con algoritmos de procesamiento de lenguaje natural}
+\def\documentsubtitle {}
+\def\documentsubject {Tema a tratar}
+\def\documentdate {\today}
+
+\def\documentauthor {Camilo Carvajal Reyes}
+\def\coursename {Unidad de Ética}
+\def\coursecode {}
+
+\def\universityname {Universidad de Chile}
+\def\universityfaculty {Facultad de Ciencias Físicas y Matemáticas}
+\def\universitydepartment {Departamento de Ingeniería Matemática}
+\def\universitydepartmentimage {departamentos/logo_ethics3}
+\def\universitylocation {Santiago de Chile}
+
+% IMPORTACIÓN DEL TEMPLATE
+\input{template}
+
+% INICIO DE PÁGINAS
+\begin{document}
+	
+% CONFIGURACIÓN DE PÁGINA Y ENCABEZADOS
+\templatePagecfg
+
+% CONFIGURACIONES FINALES
+\templateFinalcfg
+
+% ======================= INICIO DEL DOCUMENTO =======================
+
+% Título y nombre del autor
+\inserttitle
+
+\sectionanum{Descripción de la problemática}
+
+En el marco de la enseñanza de la formación ética en la FCFM, se ha utilizado la aplicación EthicApp para la obtención y posterior análisis de las decisiones morales de estudiantes ante un dilema ético. Estos casos de estudio consisten en una problemática, que se plantea en forma de pregunta. Como respuesta a esta pregunta, los estudiantes manifiestan una preferencia en la forma de un número entre 1 y 6, donde los extremos de esta escala representan posturas dispares en cuanto a la decisión a tomar. Luego de una primera respuesta se realiza una instancia de deliberación grupal, donde se toma una nueva decisión en conjunto. Finalmente, los estudiantes otorgan nuevamente una calificación, que puede diferir de la señalada en las dos instancias anteriores.
+
+\newp El Área de Ética de la FCFM ha llevado a cabo un completo análisis de las posturas de los estudiantes. No obstante, un aspecto difícil de procesar son las justificaciones que deben colocar luego de cada instancia de decisión. Pese a que análisis cualitativos de algunas respuestas han permitido plantear hipótesis preliminares respecto a los juicios morales y justificaciones de las decisiones, la gran magnitud de datos presentes dificultan la tarea de tomar conclusiones acerca de las competencias éticas exprimidas en la instancia, y como consecuencia la verificación de la adquisición de esta durante los cursos formativos de la escuela.
+
+
+\sectionanum{Proposición de solución}
+
+La ciencia de datos es una disciplina en constante crecimiento, en particular en nuestra facultad. En particular, los métodos basados en aprendizaje de máquinas han experimentado un aumento considerable en sus capacidades, ayudado por la mejora en capacidad de cómputo en las últimas décadas. Los algoritmos de procesamiento han sido una demostración de aquello, con modelos conversacionales como \textit{chatGPT} tomando protagonismo entre los medios y el público. 
+
+\newp Dentro de esta rama se encuentran los modelos de lenguaje, que intentan aproximar modelar uno o más lenguajes humanos al inducir una probabilidad a secuencias de palabras (frases, oraciones o documentos). Estos modelos se implementan usando redes neuronales profundas y siendo entrenados en grandes volúmenes de datos textuales (córpuses). Finalmente, un modelo sirve para resolver variadas tareas de procesamiento de texto, incluyendo clasificación, pregunta-respuesta e categorización/identificación de elementos relevantes de una secuencia. Entre las desventajas que presentan estos modelos están su costo de entrenamiento y capacidad limitada de interpretabilidad, ambas consecuencias de su gran tamaño.
+
+\newp Se propone la implementación de estos modelos pero también el uso de algoritmos más simples y más interpretables, para procesar los argumentos escritos por estudiantes en sus decisiones éticas. Más precisamente, se procederá a:
+
+\begin{enumerate}
+    \item Explorar las justificaciones textuales de las respuestas usando técnicas de minería de datos.
+
+    \item Implementar modelos estadísticos para texto, que sean interpretables, para predecir la respuesta (número en la escala de 1 a 6) de los estudiantes utilizando el texto de justificación.
+
+    \item Implementar los modelos anteriormente descritos para la predicción del cambio de respuesta de una etapa a otra, usando las justificaciones de la etapa intermedia y última etapa.
+    
+    \item Identificar, a través del texto, elementos semánticos que justifiquen los argumentos dados por los estudiantes. Esto usando tanto el análisis exploratorio de datos como los algoritmos.
+    
+    \item Identificar, del mismo modo que el punto anterior, elementos semánticos en cambios de valoraciones entre distintas etapas de la actividad, tanto con elementos diferentes como comunes entre ambas justificaciones.
+
+    \item Implementar modelos de lenguaje entrenados con aprendizaje profundo para las dos tareas de predicción anteriores. Comparar la capacidad de predicción tanto con los algoritmos básicos como con la capacidad humana.
+    
+    \item Utilizar modelos predictivos de texto para predecir el grado de competencia ética en las justificaciones, utilizando tanto técnicas simples como avanzadas de procesamiento de lenguaje natural.(*)
+
+    \item Utilizar modelos de reconocimiento de entidades para la identificación automática de elementos textuales que denoten elementos positivos y negativos en cuanto a la calidad de la respuesta otorgada.(*)
+\end{enumerate}
+
+Si es que los modelos muestran una buena capacidad de predicción, se pueden usar como herramienta que a la larga servirá para evaluar la progresión de competencia ética de los estudiantes con menor inversión humana. Esto es de particular relevancia para los objetivos finales del área de ética. Por otro lado, existe un interés en verificar hasta que punto los algoritmos pueden modelar relaciones semánticas complejas como lo son las justificaciones morales de estudiantes ante a una problemática. Este es un objetivo complementario y que logrará plantear nuevas perspectivas de investigación cualquiera sea el resultado, tanto del punto de vista computacional como del estudio de la ética.
+
+\\ (*) Notar que estas tareas requieren la creación de un dataset con etiquetas especiales.
+
+
+\sectionanum{Metodología de trabajo}
+
+El tiempo de trabajo contempla aproximadamente 21 semanas (dedicación aproximada de 6 horas semanales), las cuales estarán distribuidas como se muestra aproximación:
+\newp Tareas listas:
+\begin{itemize}
+    \item \textbf{Descarga de datos y creación de repositorio}: 1 semana
+    \item \textbf{Implementación de códigos de exploración básica por archivo}: 1 semana
+    \item \textbf{Formalización de proposición de trabajo}: 1 semana
+\end{itemize}
+
+\newp Tareas a realizar
+\begin{itemize}
+    \item \textbf{Preparación de dataset}
+    \item \textbf{Análisis exploratorio de datos}
+    \item \textbf{Implementación de modelos interpretables primeras tareas}
+    \item \textbf{Configuración de herramienta de etiquetamiento de datos}
+    \item \textbf{Implementación de modelos de aprendizaje profundo primeras tareas}
+    \item \textbf{Implementación de modelos en tareas con datos etiquetados}
+\end{itemize}
+
+
+% FIN DEL DOCUMENTO
+\end{document}
