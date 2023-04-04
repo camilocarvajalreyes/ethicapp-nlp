@@ -1,0 +1,105 @@
+% Template:     Reporte LaTeX
+% Documento:    Archivo principal
+% Versión:      3.2.2 (12/03/2023)
+% Codificación: UTF-8
+%
+% Autor: Pablo Pizarro R.
+%        pablo@ppizarror.com
+%
+% Manual template: [https://latex.ppizarror.com/reporte]
+% Licencia MIT:    [https://opensource.org/licenses/MIT]
+
+% CREACIÓN DEL DOCUMENTO
+\documentclass[
+	spanish, % Idioma: spanish, english, etc.
+	letterpaper, oneside
+]{article}
+
+% INFORMACIÓN DEL DOCUMENTO
+\def\documenttitle {\textbf{Revisión bibliográfica - parte 1} \\ Procesamiento de datos textuales EthicApp con algoritmos de procesamiento de lenguaje natural}
+\def\documentsubtitle {}
+\def\documentsubject {Tema a tratar}
+\def\documentdate {\today}
+
+\def\documentauthor {Camilo Carvajal Reyes}
+\def\coursename {Unidad de Ética}
+\def\coursecode {}
+
+\def\universityname {Universidad de Chile}
+\def\universityfaculty {Facultad de Ciencias Físicas y Matemáticas}
+\def\universitydepartment {Departamento de Ingeniería Matemática}
+\def\universitydepartmentimage {departamentos/logo_ethics3}
+\def\universitylocation {Santiago de Chile}
+
+% IMPORTACIÓN DEL TEMPLATE
+\input{template}
+
+% INICIO DE PÁGINAS
+\begin{document}
+	
+% CONFIGURACIÓN DE PÁGINA Y ENCABEZADOS
+\templatePagecfg
+
+% CONFIGURACIONES FINALES
+\templateFinalcfg
+
+% ======================= INICIO DEL DOCUMENTO =======================
+
+% Título y nombre del autor
+\inserttitle
+
+
+\sectionanum{Introducción}
+
+% Natural language processing (NLP) has gained attention from the media and society in general in recent months. The last conversational models such as chatGPT have generated a lot of attention. Despite the capabilities they have shown, these type of models have are arguably not capable of process ideas in the same way humans being do. This is specially the case with decisions involving moral judgements.
+El procesamiento del lenguaje natural (NLP) ha ganado la atención de los medios y la sociedad en general en los últimos meses. Los últimos modelos conversacionales como chatGPT han generado mucha atención del público. A pesar de las capacidades que han demostrado, este tipo de modelos no son capaces de procesar ideas de la misma manera que lo hacen los humanos. Este es especialmente el caso de las decisiones que implican juicios morales.
+
+% Responding to a question ethically has thus being studied in the context of large language models in order to improve their capability of assisting human beings. Moreover, when training models to predict human like responses to ethical problems and other general NLP tasks, we are sometimes able to detect patterns and structures that might explain how different cultures carry out morality.
+\newp En este contexto, responder éticamente a una pregunta se ha estudiado en el contexto de grandes modelos de lenguaje para mejorar su capacidad de ayudar a los seres humanos. Además, cuando entrenamos modelos para predecir respuestas similares a las humanas a dilemas éticos y otras tareas generales de NLP, a veces somos capaces de detectar patrones y estructuras que podrían explicar cómo las diferentes culturas enfrentan problemas morales.
+
+% In this report we will analyse different articles that involve both morality and computational semantics. These works range from training models for prediction, analysis of moral judgements on social media, corpora and datasets containing ethical responses and linguistic resources that might help processing large amounts of text.
+\newp En este informe analizaremos diferentes artículos que involucran tanto la moralidad como la semántica computacional. Estos trabajos van desde modelos de entrenamiento para la predicción, análisis de juicios morales en redes sociales, corpus y conjuntos de datos que contienen respuestas éticas y recursos lingüísticos que pueden ayudar a procesar grandes cantidades de texto.
+
+
+\sectionanum{Modelos de lenguaje aprendiendo valores humanos}
+
+Los modelos de lenguaje han sido testeados en su capacidad de imitar el razonamiento moral humano. Por un lado Jin et al. entrenan un modelo en un dataset de preguntas y respuestas morales \cite{Jin}. El método usado combina ciencias de la cognición con semántica computacional al intentar construir una cadena de pensamientos morales. Los relatados sugieren que es necesario incorporar elementos de razonamiento humano, y se sugieren lineas de investigación posteriores al respecto.
+
+\newp Otro ejemplo importante es \textit{Delphi} propuesto por Jiang et al., un modelo cuyo objetivo principal es imitar el proceso de pensamiento ético de los humanos \cite{Jiang}. Este modelo ha logrado consistencia en casos donde modelos de lenguaje suelen fallar, especialmente en dilemas nunca antes observados por el modelo. Se propone su uso paralelo a modelos de lenguaje y tiene un prototipo de investigación disponible en linea \footnote{\url{https://delphi.allenai.org/}}. Sus capacidades han sido puestas a prueba, argumentándose que sus capacidades efectivamente imitan aquellas que son propias de los grupos culturales que aportaron a las anotaciones de entrenamiento \cite{Fraser}. Naturalmente, existen críticas al proceso de entrenar modelos para cuestiones morales. Albrecht et al. argumentan que si bien ciertos modelos suelen tener métricas de desempeño similares a las de los seres humanos, esta no refleja un razonamiento o entendimiento de la problemática en cuestión \cite{Albrecht}. Una muestra de esto es pedirle justificación a modelos conversacionales, en donde se desprenden justificaciones que resultan ser poco éticas.
+
+
+\sectionanum{Datasets que contienen decisiones o juzgamientos morales}
+
+En el contexto de los modelos previamente mencionados y, más generalmente, para ampliar la capacidad de exploración en el área, se han propuesto varios datasets que exploran las respuestas humanas a cuestiones morales en distintos formatos.
+
+\begin{itemize}
+    \item MoralExceptQA: un dataset que consiste en preguntas y respuestas de excepciones morales \cite{Jin}.
+    \item ETHICS dataset: un benchmark que incluye conceptos de justicia, bienestar, deberes, virtudes y moralidad de sentido común \cite{Hen}.
+    \item Datset basado en el foro ``AmITheAsshole'' del sitio web Reddit \cite{Efs}.
+    \item Moral Foundations Twitter Corpus: un colección de 35108 tweets procesado para siete categorias de discurso y anotado a mano por anotadores entrenados para 10 categorías de sentimiento moral \cite{Hoover}.
+    \item SCRUPLES: un dataset con 625000 juzgamientos éticos de más de 32000 anécdotas de la vida real \cite{Lourie}.
+\end{itemize}
+
+
+\begin{references}
+    \bibitem{Jin} Jin, Z., Levine, S., Gonzalez Adauto, F., Kamal, O., Sap, M., Sachan, M., Mihalcea, R., Tenenbaum, J., & Schölkopf, B. (2022). When to Make Exceptions: Exploring Language Models as Accounts of Human Moral Judgment. Advances in Neural Information Processing Systems, 35, 28458–28473. \url{https://openreview.net/forum?id=uP9RiC4uVcR}
+
+    \bibitem{Hen} Hendrycks, D., Burns, C., Basart, S., Critch, A., Li, J., Song, D., & Steinhardt, J. (2023, April 2). Aligning AI With Shared Human Values. International Conference on Learning Representations. \url{https://openreview.net/forum?id=dNy_RKzJacY}
+
+    \bibitem{Jiang} Jiang, L., Hwang, J. D., Bhagavatula, C., Bras, R. L., Liang, J., Dodge, J., Sakaguchi, K., Forbes, M., Borchardt, J., Gabriel, S., Tsvetkov, Y., Etzioni, O., Sap, M., Rini, R., & Choi, Y. (2022). Can Machines Learn Morality? The Delphi Experiment (arXiv:2110.07574). arXiv. \url{https://doi.org/10.48550/arXiv.2110.07574}
+
+    \bibitem{Fraser} Fraser, K. C., Kiritchenko, S., & Balkir, E. (2022). Does Moral Code have a Moral Code? Probing Delphi’s Moral Philosophy. Proceedings of the 2nd Workshop on Trustworthy Natural Language Processing (TrustNLP 2022), 26–42. \url{https://doi.org/10.18653/v1/2022.trustnlp-1.3}
+
+    \bibitem{Albrecht} Albrecht, J., Kitanidis, E., & Fetterman, A. J. (2022). Despite ‘super-human’ performance, current LLMs are unsuited for decisions about ethics and safety (arXiv:2212.06295). arXiv. \url{https://doi.org/10.48550/arXiv.2212.06295}
+
+    \bibitem{Efs} Efstathiadis, I. S., Paulino-Passos, G., & Toni, F. (2022). Explainable patterns for distinction and prediction of moral judgement on reddit. \url{https://arxiv.org/pdf/2201.11155.pdf}
+
+    \bibitem{Hoover} Hoover, J., Portillo-Wightman, G., Yeh, L., Havaldar, S., Davani, A. M., Lin, Y., ... & Dehghani, M. (2020). Moral foundations twitter corpus: A collection of 35k tweets annotated for moral sentiment. Social Psychological and Personality Science, 11(8), 1057-1071. \url{https://doi.org/10.1177/1948550619876629}
+
+    \bibitem{Lourie} Lourie, N., Le Bras, R., & Choi, Y. (2021, May). Scruples: A corpus of community ethical judgments on 32,000 real-life anecdotes. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 35, No. 15, pp. 13470-13479).
+    
+\end{references}
+
+
+% FIN DEL DOCUMENTO
+\end{document}
