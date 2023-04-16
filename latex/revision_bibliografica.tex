@@ -16,7 +16,7 @@
 ]{article}
 
 % INFORMACIÓN DEL DOCUMENTO
-\def\documenttitle {\textbf{Revisión bibliográfica - parte 1} \\ Procesamiento de datos textuales EthicApp con algoritmos de procesamiento de lenguaje natural}
+\def\documenttitle {\textbf{Revisión bibliográfica} \\ Procesamiento de datos textuales EthicApp con algoritmos de procesamiento de lenguaje natural}
 \def\documentsubtitle {}
 \def\documentsubject {Tema a tratar}
 \def\documentdate {\today}
@@ -81,10 +81,25 @@ En el contexto de los modelos previamente mencionados y, más generalmente, para
 \end{itemize}
 
 
-\begin{references}
-    \bibitem{Jin} Jin, Z., Levine, S., Gonzalez Adauto, F., Kamal, O., Sap, M., Sachan, M., Mihalcea, R., Tenenbaum, J., & Schölkopf, B. (2022). When to Make Exceptions: Exploring Language Models as Accounts of Human Moral Judgment. Advances in Neural Information Processing Systems, 35, 28458–28473. \url{https://openreview.net/forum?id=uP9RiC4uVcR}
+\sectionanum{Recursos psico-linguisticos}
 
-    \bibitem{Hen} Hendrycks, D., Burns, C., Basart, S., Critch, A., Li, J., Song, D., & Steinhardt, J. (2023, April 2). Aligning AI With Shared Human Values. International Conference on Learning Representations. \url{https://openreview.net/forum?id=dNy_RKzJacY}
+Más allá del aprendizaje automático, la extracción de elementos que den muestra del razonamiento moral detrás de texto escrito por humano lleva siendo investigado por un tiempo. Uno de los marcos teóricos que ha tenido más influencia en este contexto ha sido la **teoría de fundamentos morales** (TMF, por sus siglas en inglés), propuesta por Haidt y Graham \cite{mtf,mtf2}. Esta teoría de psicología social propone la existencia de fundamentos morales innatos y universales que afectan los juzgamientos éticos de las personas. Estos incluyen: cuidado/daño, equidad/trampa, lealtad/traición, autoridad/suberción, santidad/degradación y libertad/opresión. Se plantea la presencia de estos elementos en distintas culturas, pese a la evolución de estos. Las diferencias en comportamientos y creencias éticas (y como consecuencia disintos compartamientos grupales e idiologías) son resultado del enfasis que se le da a algunos fundamentos por sobre otros.
+
+\newp En este contexto, se han desarrollado recursos semánticos como el diccionario de fundamentos morales (MFD por sus siglas en inglés), que mide el grado en el que ciertas palabras reflejan los seis fundamentos morales planteados en TMF \cite{tfd}. En este se incluyen palabras reacionadas a los fundamentos y se les asigna un puntaje de acuerdo  la frecuencia de uso y grado de lenguaje moral empleado. El diccionario se ha usado en varios estudios para examinar el contenido moral de varios textos, tales como discursos, artículos y mensajes de redes sociales. 
+
+\newp El TFD ha sido extendido tanto usando métodos semi-automáticos \cite{tfde}, como usando anotadores para registrar las probabilidades de pertenencia a los fundamentos \cite{etfd}. Estos recursos pueden usarse tanto para detectar directamente palabras en texto que corresponda a las distintas dimensiones morales, como para complementar el trabajo de clasificadores automáticos en distintas tareas que pueden ser favorecidas por tener conocimiento directo de palabras con valor moral.
+
+
+\sectionanum{Modelos que buscan predecir comportamiento humano}
+
+Varios son los trabajos que buscan la predicción/identificación de elementos morales en texto natural. En esta sección abordaremos algunos de ellos. Primeramente, Garten et al. 2016 busca la detección automática de retóricas morales \cite{garten}. Para esto usan el diccionario de fundamentos morales \cite{tfd}, combinado con representaciones de palabras ditribuidas.
+
+\newp \lipsum[1]
+
+
+\begin{references}
+
+    \bibitem{Jin} Jin, Z., Levine, S., Gonzalez Adauto, F., Kamal, O., Sap, M., Sachan, M., Mihalcea, R., Tenenbaum, J., & Schölkopf, B. (2022). When to Make Exceptions: Exploring Language Models as Accounts of Human Moral Judgment. Advances in Neural Information Processing Systems, 35, 28458–28473. \url{https://openreview.net/forum?id=uP9RiC4uVcR}
 
     \bibitem{Jiang} Jiang, L., Hwang, J. D., Bhagavatula, C., Bras, R. L., Liang, J., Dodge, J., Sakaguchi, K., Forbes, M., Borchardt, J., Gabriel, S., Tsvetkov, Y., Etzioni, O., Sap, M., Rini, R., & Choi, Y. (2022). Can Machines Learn Morality? The Delphi Experiment (arXiv:2110.07574). arXiv. \url{https://doi.org/10.48550/arXiv.2110.07574}
 
@@ -92,12 +107,26 @@ En el contexto de los modelos previamente mencionados y, más generalmente, para
 
     \bibitem{Albrecht} Albrecht, J., Kitanidis, E., & Fetterman, A. J. (2022). Despite ‘super-human’ performance, current LLMs are unsuited for decisions about ethics and safety (arXiv:2212.06295). arXiv. \url{https://doi.org/10.48550/arXiv.2212.06295}
 
+    \bibitem{Hen} Hendrycks, D., Burns, C., Basart, S., Critch, A., Li, J., Song, D., & Steinhardt, J. (2023, April 2). Aligning AI With Shared Human Values. International Conference on Learning Representations. \url{https://openreview.net/forum?id=dNy_RKzJacY}
+
     \bibitem{Efs} Efstathiadis, I. S., Paulino-Passos, G., & Toni, F. (2022). Explainable patterns for distinction and prediction of moral judgement on reddit. \url{https://arxiv.org/pdf/2201.11155.pdf}
 
     \bibitem{Hoover} Hoover, J., Portillo-Wightman, G., Yeh, L., Havaldar, S., Davani, A. M., Lin, Y., ... & Dehghani, M. (2020). Moral foundations twitter corpus: A collection of 35k tweets annotated for moral sentiment. Social Psychological and Personality Science, 11(8), 1057-1071. \url{https://doi.org/10.1177/1948550619876629}
 
     \bibitem{Lourie} Lourie, N., Le Bras, R., & Choi, Y. (2021, May). Scruples: A corpus of community ethical judgments on 32,000 real-life anecdotes. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 35, No. 15, pp. 13470-13479).
-    
+
+    \bibitem{mft} Haidt, J. (2007). The New Synthesis in Moral Psychology. Science, 316(5827), 998–1002. \url{https://doi.org/10.1126/science.1137651}
+
+    \bibitem{mft2} Graham, J., Haidt, J., Koleva, S., Motyl, M., Iyer, R., Wojcik, S. P., & Ditto, P. H. (2013). Chapter Two - Moral Foundations Theory: The Pragmatic Validity of Moral Pluralism. In P. Devine & A. Plant (Eds.), Advances in Experimental Social Psychology (Vol. 47, pp. 55–130). Academic Press. \url{https://doi.org/10.1016/B978-0-12-407236-7.00002-4}
+
+    \bibitem{tfd} Graham, J., Haidt, J., & Nosek, B. A. (2009). Liberals and conservatives rely on different sets of moral foundations. Journal of Personality and Social Psychology, 96, 1029–1046. \url{https://doi.org/10.1037/a0015141}
+
+    \bibitem{tfde} Rezapour, R., Shah, S. H., & Diesner, J. (2019). Enhancing the Measurement of Social Effects by Capturing Morality. Proceedings of the Tenth Workshop on Computational Approaches to Subjectivity, Sentiment and Social Media Analysis, 35–45. \url{https://doi.org/10.18653/v1/W19-1305}
+
+    \bibitem{etfd} Hopp, F. R., Fisher, J. T., Cornell, D., Huskey, R., & Weber, R. (2021). The extended Moral Foundations Dictionary (eMFD): Development and applications of a crowd-sourced approach to extracting moral intuitions from text. Behavior Research Methods, 53(1), 232–246. \url{https://doi.org/10.3758/s13428-020-01433-0}
+
+    \bibitem{garten} Garten, J., Boghrati, R., Hoover, J., Johnson, K. M., & Dehghani, M. (2016). Morality Between the Lines: Detecting Moral Sentiment In Text. Proceedings of IJCAI 2016 Workshop on Computational Modeling of Attitudes.
+
 \end{references}
 
 
