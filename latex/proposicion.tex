@@ -19,7 +19,7 @@
 \def\documenttitle {\textbf{Proposición de trabajo} \\ Procesamiento de datos textuales EthicApp con algoritmos de procesamiento de lenguaje natural}
 \def\documentsubtitle {}
 \def\documentsubject {Tema a tratar}
-\def\documentdate {\today}
+\def\documentdate {30 de Marzo 2023 }
 
 \def\documentauthor {Camilo Carvajal Reyes}
 \def\coursename {Unidad de Ética}
@@ -48,9 +48,17 @@
 % Título y nombre del autor
 \inserttitle
 
+Actualización: se agregan visualizaciones (19 de mayo).
+
 \sectionanum{Descripción de la problemática}
 
-En el marco de la enseñanza de la formación ética en la FCFM, se ha utilizado la aplicación EthicApp para la obtención y posterior análisis de las decisiones morales de estudiantes ante un dilema ético. Estos casos de estudio consisten en una problemática, que se plantea en forma de pregunta. Como respuesta a esta pregunta, los estudiantes manifiestan una preferencia en la forma de un número entre 1 y 6, donde los extremos de esta escala representan posturas dispares en cuanto a la decisión a tomar. Luego de una primera respuesta se realiza una instancia de deliberación grupal, donde se toma una nueva decisión en conjunto. Finalmente, los estudiantes otorgan nuevamente una calificación, que puede diferir de la señalada en las dos instancias anteriores.
+En el marco de la enseñanza de la formación ética en la FCFM, se ha utilizado la aplicación EthicApp para la obtención y posterior análisis de las decisiones morales de estudiantes ante un dilema ético. Estos casos de estudio consisten en una problemática, que se plantea en forma de pregunta. Como respuesta a esta pregunta, los estudiantes manifiestan una preferencia en la forma de un número entre 1 y 6, donde los extremos de esta escala representan posturas dispares en cuanto a la decisión a tomar.
+
+\insertimage[\label{img:respuesta1}]{img/intro2}{scale=0.75}{Estructura de respuestas de estudiantes.}
+
+Luego de una primera respuesta se realiza una instancia de deliberación grupal, donde se toma una nueva decisión en conjunto. Finalmente, los estudiantes otorgan nuevamente una calificación, que puede diferir de la señalada en las dos instancias anteriores.
+
+\insertimage[\label{img:respuesta2}]{img/intro4}{scale=0.75}{Iteraciones de las respuestas de estudiantes.}
 
 \newp El Área de Ética de la FCFM ha llevado a cabo un completo análisis de las posturas de los estudiantes. No obstante, un aspecto difícil de procesar son las justificaciones que deben colocar luego de cada instancia de decisión. Pese a que análisis cualitativos de algunas respuestas han permitido plantear hipótesis preliminares respecto a los juicios morales y justificaciones de las decisiones, la gran magnitud de datos presentes dificultan la tarea de tomar conclusiones acerca de las competencias éticas exprimidas en la instancia, y como consecuencia la verificación de la adquisición de esta durante los cursos formativos de la escuela.
 
@@ -68,7 +76,11 @@ La ciencia de datos es una disciplina en constante crecimiento, en particular en
 
     \item Implementar modelos estadísticos para texto, que sean interpretables, para predecir la respuesta (número en la escala de 1 a 6) de los estudiantes utilizando el texto de justificación.
 
+    \insertimage[\label{img:modelo1}]{img/modelo1}{scale=0.75}{Ejemplo de modelo para predecir posturas de estudiantes.}
+
     \item Implementar los modelos anteriormente descritos para la predicción del cambio de respuesta de una etapa a otra, usando las justificaciones de la etapa intermedia y última etapa.
+
+    \insertimage[\label{img:modelo2}]{img/modelo2}{scale=0.75}{Ejemplo de modelo para predecir cambios de postura.}
     
     \item Identificar, a través del texto, elementos semánticos que justifiquen los argumentos dados por los estudiantes. Esto usando tanto el análisis exploratorio de datos como los algoritmos.
     
@@ -79,6 +91,8 @@ La ciencia de datos es una disciplina en constante crecimiento, en particular en
     \item Utilizar modelos predictivos de texto para predecir el grado de competencia ética en las justificaciones, utilizando tanto técnicas simples como avanzadas de procesamiento de lenguaje natural.(*)
 
     \item Utilizar modelos de reconocimiento de entidades para la identificación automática de elementos textuales que denoten elementos positivos y negativos en cuanto a la calidad de la respuesta otorgada.(*)
+
+    \insertimage[\label{img:modelo3}]{img/modelo3}{scale=0.75}{Ejemplo de modelo para asistencia a la evaluación de competencia ética.}
 \end{enumerate}
 
 Si es que los modelos muestran una buena capacidad de predicción, se pueden usar como herramienta que a la larga servirá para evaluar la progresión de competencia ética de los estudiantes con menor inversión humana. Esto es de particular relevancia para los objetivos finales del área de ética. Por otro lado, existe un interés en verificar hasta que punto los algoritmos pueden modelar relaciones semánticas complejas como lo son las justificaciones morales de estudiantes ante a una problemática. Este es un objetivo complementario y que logrará plantear nuevas perspectivas de investigación cualquiera sea el resultado, tanto del punto de vista computacional como del estudio de la ética.
@@ -88,7 +102,7 @@ Si es que los modelos muestran una buena capacidad de predicción, se pueden usa
 
 \sectionanum{Metodología de trabajo}
 
-El tiempo de trabajo contempla aproximadamente 21 semanas (dedicación aproximada de 6 horas semanales), las cuales estarán distribuidas como se muestra acontinuación:
+El tiempo de trabajo contempla aproximadamente 21 semanas (dedicación aproximada de 6 horas semanales), las cuales estarán distribuidas como se muestra a continuación:
 
 \iffalse
 \newp Tareas listas:
