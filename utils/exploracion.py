@@ -1,5 +1,6 @@
 """Some text basic exploration functions"""
 import pandas as pd
+import numpy as np
 from collections import Counter
 from nltk import ngrams
 import matplotlib.pyplot as plt
@@ -89,3 +90,24 @@ def wordcloud_from_column(df:pd.DataFrame,column:str,maxfont:int=40,ignore:list=
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
     plt.show()
+
+
+def comment_length(df:pd.DataFrame,column:str,ignore:list=[]) -> np.array:
+    """
+    DESCRIPTION
+
+    Arguments
+
+        df: pd.DataFrame
+            dataframe containing text to analyse
+
+        column: str
+            target column name (from df) with text content
+        
+        ignore: list, default []
+            list of words to ignore
+    
+    """
+    list_words = df[column].apply(lambda text: text.lower().split())
+    list_words = list_words.apply(lambda list_text: [w for w in list_text if w not in ignore])
+    return list_words.apply(lambda list_text: len(list_text)).to_numpy()
