@@ -50,12 +50,12 @@ def most_common(df:pd.DataFrame,column:str,n_grams:int=1,limit:int=10,ignore:lis
     return tokens
 
 
-def plot_token_frequency(tokens:pd.Series,title=None,fig_size=(5,4)):
+def plot_token_frequency(tokens:pd.Series,title=None,fig_size=(5,4),ax=None):
     """
     Takes a Pandas Series of value counts (of tokens sorted by frequency) and plots it
     """
     title = 'Tokens' if title is None else title
-    tokens.plot.barh(figsize=fig_size,title=title)
+    tokens.plot.barh(figsize=fig_size,title=title,ax=ax)
 
 
 def wordcloud_from_column(df:pd.DataFrame,column:str,maxfont:int=40,ignore:list=[]):
