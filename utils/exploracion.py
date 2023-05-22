@@ -5,6 +5,7 @@ from collections import Counter
 from nltk import ngrams
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
+import re
 
 
 def most_common(df:pd.DataFrame,column:str,n_grams:int=1,limit:int=10,ignore:list=[]) -> pd.Series:
@@ -34,12 +35,15 @@ def most_common(df:pd.DataFrame,column:str,n_grams:int=1,limit:int=10,ignore:lis
             pandas Series with n_gram to frequency for the given dataframe and column
     
     """
+    list_words = ' '.join(df[column]).lower().split()
+    list_words = [w for w in list_words if w not in ignore]
+
     if n_grams == 1:
-        tokens =  pd.Series(' '.join(df[column]).lower().split()).value_counts()
+        tokens =  pd.Series(list_words).value_counts()
         tokens = tokens.drop(ignore,errors='ignore')
         tokens = tokens[:limit]
     else:
-        ngram_counts = Counter(ngrams(' '.join(df[column]).lower().split(), n_grams))
+        ngram_counts = Counter(ngrams(list_words, n_grams))
         comunes_2g = ngram_counts.most_common(limit)
         tokens = pd.Series([tup[1] for tup in comunes_2g],index=[' '.join(tup[0]) for tup in comunes_2g])
     
