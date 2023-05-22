@@ -5,7 +5,7 @@ from collections import Counter
 from nltk import ngrams
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
-import re
+from IPython.display import Markdown, display
 
 
 def most_common(df:pd.DataFrame,column:str,n_grams:int=1,limit:int=10,ignore:list=[]) -> pd.Series:
@@ -115,3 +115,28 @@ def comment_length(df:pd.DataFrame,column:str,ignore:list=[]) -> np.array:
     list_words = df[column].apply(lambda text: text.lower().split())
     list_words = list_words.apply(lambda list_text: [w for w in list_text if w not in ignore])
     return list_words.apply(lambda list_text: len(list_text)).to_numpy()
+
+
+def basic_stats(arr):
+    dic = {'mean':np.mean(arr),'median':np.median(arr),'std':np.std(arr),
+        'min':np.min(arr),'max':np.max(arr)}
+    return dic
+
+
+def print_basic_stats(arr):
+    dic = basic_stats(arr)
+    print("Media:", dic['mean'])
+    print("Desviación estándar:", dic['std'])
+    print("Mediana:", dic['median'])
+    print("Mínimo:", dic['min'])
+    print("Máximo:", dic['max'])
+
+
+def print_table_md(headers, data):
+    table_md = '| ' + ' | '.join(headers) + ' |\n'
+    table_md += '| ' + ' | '.join(['---'] * len(headers)) + ' |\n'
+
+    for row in data:
+        table_md += '| ' + ' | '.join(str(item) for item in row) + ' |\n'
+
+    display(Markdown(table_md))
