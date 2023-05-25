@@ -8,3 +8,56 @@ alicia:
   - 2022.CD1100
 adela:
   - 2021.CD2201
+  - 2022.CD1201
+laura_fases:
+  - 2020.CD2201:
+    - Ind1:
+      -
+    - Grup:
+      -
+    - Ind2:
+      -
+julieta_fases:
+  - 2021.CD1100:
+    - Ind1:
+      - 3
+    - Grup:
+      - 4
+    - Ind2:
+      - 5
+alicia_fases:
+  - 2021.CD1201:
+    - Ind1:
+      - 1
+      - 2
+    - Grup:
+      - 3
+      - 4
+    - Ind2:
+      - 5
+      - 6
+  - 2022.CD1100:
+    - Ind1:
+      - 2
+    - Grup:
+      - 3
+    - Ind2:
+      - 4
+adela_fases:
+  - 2021.CD2201:
+    - Ind1:
+      - 1
+      - 2
+    - Grup:
+      - 3
+      - 4
+    - Ind2:
+      - 5
+      - 6
+  - 2022.CD1201:
+    - Ind1:
+      - 2
+    - Grup:
+      - 3
+    - Ind2:
+      - 4
