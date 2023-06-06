@@ -69,13 +69,13 @@ def df_caso(nombre:str) -> pd.DataFrame:
 
 def fase(df:pd.DataFrame,fase:int,caso:str) -> pd.DataFrame:
     """
-     Filtra un dataframe...
+     Filtra un dataframe de modo que retorne las instancias de la fase en cuestión
     """
-    condition_tuples = []
+    condition_df = []
     key_caso = caso + '_fases'
 
     for curso in datamap[key_caso].keys():
         for indice in datamap[key_caso][curso][fase]:
-            condition_tuples.append((curso,indice))
+            condition_df.append(df.loc[(df['phase'] == indice) & (df['curso'] == curso)])
     
-    return df[(df['phase'],df['curso']) in condition_tuples]
+    return pd.concat(condition_df)
