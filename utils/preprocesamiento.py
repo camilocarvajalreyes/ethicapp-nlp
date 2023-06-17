@@ -29,14 +29,59 @@ def delete_non_string_rows(df:pd.DataFrame, column_name:str, verbose=True) -> pd
         df_removed: pd.DataFrame
             clean dataframe (without non string elements for the given column)
     """
+    length = len(df)
     non_string_rows = df[~df[column_name].apply(lambda x: isinstance(x, str))]
 
     if verbose:
-        print("{} rows found with non string elements for column {}".format(len(non_string_rows),column_name))
+        na_len = len(non_string_rows)
+        prc = '{0:.2f}'.format(100*na_len/length)
+        print("{} rows found with non string elements for column {} ({}%)".format(na_len,column_name,prc))
         
     df_removed = df.drop(non_string_rows.index)
 
     return df_removed
+
+
+def process_df(df:pd.DataFrame, text_column:str, target_column:str, verbose=True) -> pd.DataFrame:
+    """Takes a pandas dataframe and returns a new one with no NA values and without useless instances
+    
+    Arguments
+
+        df: pd.DataFrame
+            dataframe containing text to analyse
+
+        text_column: str
+            text column name (from df) with text content
+        
+        target_column: str
+            target column name (from df) with value to predict
+        
+        verbose: bool
+            whether to print the amount of problematic rows found
+    
+    Returns
+    
+        new_df: pd.DataFrame
+            processed dataframe
+    
+    """
+    length = len(df)
+    new_df = delete_non_string_rows(df,text_column,verbose)
+    new_df = new_df[new_df[text_column].notna()]  # not actually needed
+    new_df = new_df[new_df['sel'].notna()]
+
+    if verbose:
+        freq_7 = len(new_df[new_df['max_num'] > 6])
+        prc_7 = '{0:.2f}'.format(100*freq_7/length)
+        print("Deleting {} columns for which max target value is over 7 ({}%)".format(freq_7,prc_7))
+
+    new_df = new_df.drop(new_df[new_df['max_num'] > 6].index)
+
+    if verbose:
+        print("{} available rows after processing".format(len(new_df)))
+
+    return new_df
+
 
 
 class StemmerTokenizer:
