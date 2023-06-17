@@ -13,15 +13,22 @@ def merge_dictionaries(list_of_dictionaries):
     return merged_dict
 
 
-with open('datamap.yaml', 'r') as stream:
-    datamap = yaml.safe_load(stream)
-    for k in datamap.keys():
-        if '_fases' in k:
-            datamap[k] = merge_dictionaries(datamap[k])
-    for k in datamap.keys():
-        if '_fases' in k:
-            for kk in datamap[k].keys():
-                datamap[k][kk] = merge_dictionaries(datamap[k][kk])
+def read_datamap(file):
+    with open(file, 'r') as stream:
+        datamap = yaml.safe_load(stream)
+        for k in datamap.keys():
+            if '_fases' in k:
+                datamap[k] = merge_dictionaries(datamap[k])
+        for k in datamap.keys():
+            if '_fases' in k:
+                for kk in datamap[k].keys():
+                    datamap[k][kk] = merge_dictionaries(datamap[k][kk])
+    return datamap
+
+try:
+    datamap = read_datamap('datamap.yaml')
+except FileNotFoundError:
+    datamap = read_datamap('../datamap.yaml')
 
 
 def files_in_folder(folder):
@@ -56,7 +63,11 @@ def df_caso(nombre:str) -> pd.DataFrame:
     dfs = []
     for curso in iteraciones:
             folder = datamap['parent']+curso+'/'
-            files = files_in_folder(folder)
+            try:
+                files = files_in_folder(folder)
+            except FileNotFoundError:
+                folder = '../' + folder
+                files = files_in_folder(folder)
             for file in  files:
                 df = pd.read_csv(folder + file, delimiter=';',index_col='id')
                 df['curso'] = curso
