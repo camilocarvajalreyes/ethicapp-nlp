@@ -94,7 +94,7 @@ class StemmerTokenizer:
         return [self.ps.stem(t) for t in doc_tok]
 
 
-def make_BoW_preprocess(tokenizer:StemmerTokenizer,column:str,max_ngram:int=2,min_ngram:int=1) -> ColumnTransformer:
+def make_BoW_preprocess(tokenizer:StemmerTokenizer,column:str,max_ngram:int=2,min_ngram:int=1,mindf=1,maxdf=1.0) -> ColumnTransformer:
     """
     Wraps up tokenising and n_gram selection into a ColumnTransformer for a dataframe
 
@@ -111,6 +111,12 @@ def make_BoW_preprocess(tokenizer:StemmerTokenizer,column:str,max_ngram:int=2,mi
 
         min_ngram: int, default 1
             minimum ngram to consider, 1 being single words
+        
+        mindf: int/float, default 1
+            minimum number/proportion of appearances for an n_gram to be considered
+
+        maxdf: int/float, default 1.0
+            maximum number/proportion of appearances for an n_gram to be considered
     
     Returns
     
@@ -121,7 +127,9 @@ def make_BoW_preprocess(tokenizer:StemmerTokenizer,column:str,max_ngram:int=2,mi
     
     bog = CountVectorizer(
         tokenizer = tokenizer,
-        ngram_range=(min_ngram,max_ngram)
+        ngram_range=(min_ngram,max_ngram),
+        min_df = mindf,
+        max_df = maxdf,
         )
 
     preprocessing = ColumnTransformer(
