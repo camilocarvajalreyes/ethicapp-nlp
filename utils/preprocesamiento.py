@@ -85,13 +85,15 @@ def process_df(df:pd.DataFrame, text_column:str, target_column:str, verbose=True
 
 
 class StemmerTokenizer:
-    def __init__(self):
+    def __init__(self,stem=True):
+        self.stem = stem
         self.ps = SnowballStemmer('spanish')
     
     def __call__(self, doc):
         doc_tok = word_tokenize(doc)
         doc_tok = [t for t in doc_tok if t not in stop_words]
-        return [self.ps.stem(t) for t in doc_tok]
+        doc_tok = [self.ps.stem(t) for t in doc_tok] if self.stem else doc_tok
+        return doc_tok
 
 
 def make_BoW_preprocess(tokenizer:StemmerTokenizer,column:str,max_ngram:int=2,min_ngram:int=1,mindf=1,maxdf=1.0) -> ColumnTransformer:
