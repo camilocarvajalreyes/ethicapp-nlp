@@ -85,13 +85,14 @@ def process_df(df:pd.DataFrame, text_column:str, target_column:str, verbose=True
 
 
 class StemmerTokenizer:
-    def __init__(self,stem=True):
+    def __init__(self,stem=True,rmv_punctuation=False):
         self.stem = stem
+        self.rmv_words = stop_words + [',','.',':',';','...'] if rmv_punctuation else stop_words
         self.ps = SnowballStemmer('spanish')
     
     def __call__(self, doc):
         doc_tok = word_tokenize(doc)
-        doc_tok = [t for t in doc_tok if t not in stop_words]
+        doc_tok = [t for t in doc_tok if t not in self.rmv_words]
         doc_tok = [self.ps.stem(t) for t in doc_tok] if self.stem else doc_tok
         return doc_tok
 
