@@ -48,8 +48,12 @@
 % Título y nombre del autor
 \inserttitle
 
+\begin{abstract}
+    La aplicaión \textit{EthicApp} es una herramienta que permite recolectar preferencias de estudiantes ante dilemas éticos y sus justificaciones. Lamentablemente, el gran volumen de datos (del orden de dos mil textos) dificulta el análisis de estos. Este trabajo aborda el uso de modelos de aprendizaje de máquina supervisados y no-supervisados para modelar la estructura textual de las respuestas y con esto apoyar el análisis que puedan hacer los equipos docentes. \color{red} Acá falta un resumen de los resultados y su pertinencia respecto al objetivo global. \color{black}
+\end{abstract}
 
-\sectionanum{Descripción de la problemática}
+
+\section{Descripción de la problemática}
 
 En el marco de la enseñanza de la formación ética en la FCFM, se ha utilizado la aplicación EthicApp para la obtención y posterior análisis de las decisiones morales de estudiantes ante un dilema ético. Estos casos de estudio consisten en una problemática, que se plantea en forma de pregunta. Como respuesta a esta pregunta, los estudiantes manifiestan una preferencia en la forma de un número entre 1 y 6, donde los extremos de esta escala representan posturas dispares en cuanto a la decisión a tomar.
 
@@ -62,7 +66,7 @@ Luego de una primera respuesta se realiza una instancia de deliberación grupal,
 \newp El Área de Ética de la FCFM ha llevado a cabo un completo análisis de las posturas de los estudiantes. No obstante, un aspecto difícil de procesar son las justificaciones que deben colocar luego de cada instancia de decisión. Pese a que análisis cualitativos de algunas respuestas han permitido plantear hipótesis preliminares respecto a los juicios morales y justificaciones de las decisiones, la gran magnitud de datos presentes dificultan la tarea de tomar conclusiones acerca de las competencias éticas exprimidas en la instancia, y como consecuencia la verificación de la adquisición de esta durante los cursos formativos de la escuela.
 
 
-\sectionanum{Proposición de solución}
+\section{Proposición de solución}
 
 La ciencia de datos es una disciplina en constante crecimiento, en particular en nuestra facultad. En particular, los métodos basados en aprendizaje de máquinas han experimentado un aumento considerable en sus capacidades, ayudado por la mejora en capacidad de cómputo en las últimas décadas. Los algoritmos de procesamiento han sido una demostración de aquello, con modelos conversacionales como \textit{chatGPT} tomando protagonismo entre los medios y el público. 
 
@@ -99,7 +103,7 @@ Si es que los modelos muestran una buena capacidad de predicción, se pueden usa
 \\ (*) Notar que estas tareas requieren la creación de un dataset con etiquetas especiales.
 
 
-\sectionanum{Estado del arte}
+\section{Estado del arte}
 
 El procesamiento del lenguaje natural (NLP) ha ganado la atención de los medios y la sociedad en general en los últimos meses. Los últimos modelos conversacionales como chatGPT han generado mucha atención del público. A pesar de las capacidades que han demostrado, este tipo de modelos no son capaces de procesar ideas de la misma manera que lo hacen los humanos. Este es especialmente el caso de las decisiones que implican juicios morales.
 
@@ -110,7 +114,7 @@ El procesamiento del lenguaje natural (NLP) ha ganado la atención de los medios
 \newp En este informe analizaremos diferentes artículos que involucran tanto la moralidad como la semántica computacional. Estos trabajos van desde modelos de entrenamiento para la predicción, análisis de juicios morales en redes sociales, corpus y conjuntos de datos que contienen respuestas éticas y recursos lingüísticos que pueden ayudar a procesar grandes cantidades de texto.
 
 
-\subsectionanum{Modelos de lenguaje aprendiendo valores humanos}
+\subsection{Modelos de lenguaje aprendiendo valores humanos}
 
 Los modelos de lenguaje se han convertido en herramientas útiles a la hora de enfrentar diversas tareas de procesamiento de lenguaje, en especial aquellos que han sido entrenados en grandes corpuses de texto. Su capacidad de codificar de antemano elementos del lenguaje y naturaleza humana en su etapa de entrenamiento ha sido puesta a prueba también para predecir juicios morales humanos. Jentzsch et al. testean un modelo de estas características para predecir juicios usando simplemente similitudes de representaciones, mostrando que decisiones naturalmente humanas aparecen codificadas naturalmente \cite{use}.
 
@@ -119,7 +123,7 @@ Los modelos de lenguaje se han convertido en herramientas útiles a la hora de e
 \newp Otro ejemplo importante es \textit{Delphi} propuesto por Jiang et al., un modelo cuyo objetivo principal es imitar el proceso de pensamiento ético de los humanos \cite{Jiang}. Este modelo ha logrado consistencia en casos donde modelos de lenguaje suelen fallar, especialmente en dilemas nunca antes observados por el modelo. Se propone su uso paralelo a modelos de lenguaje y tiene un prototipo de investigación disponible en linea \footnote{\url{https://delphi.allenai.org/}}. Sus capacidades han sido puestas a prueba, argumentándose que sus capacidades efectivamente imitan aquellas que son propias de los grupos culturales que aportaron a las anotaciones de entrenamiento \cite{Fraser}. Naturalmente, existen críticas al proceso de entrenar modelos para cuestiones morales. Albrecht et al. argumentan que si bien ciertos modelos suelen tener métricas de desempeño similares a las de los seres humanos, esta no refleja un razonamiento o entendimiento de la problemática en cuestión \cite{Albrecht}. Una muestra de esto es pedirle justificación a modelos conversacionales, en donde se desprenden justificaciones que resultan ser poco éticas.
 
 
-\subsectionanum{Datasets que contienen decisiones o juzgamientos morales}
+\subsection{Datasets que contienen decisiones o juzgamientos morales}
 
 En el contexto de los modelos previamente mencionados y, más generalmente, para ampliar la capacidad de exploración en el área, se han propuesto varios datasets que exploran las respuestas humanas a cuestiones morales en distintos formatos.
 
@@ -133,7 +137,7 @@ En el contexto de los modelos previamente mencionados y, más generalmente, para
 \end{itemize}
 
 
-\subsectionanum{Recursos psico-linguisticos}
+\subsection{Recursos psico-linguisticos}
 \label{section:rec}
 
 Más allá del aprendizaje automático, la extracción de elementos que den muestra del razonamiento moral detrás de texto escrito por humano lleva siendo investigado por un tiempo. Uno de los marcos teóricos que ha tenido más influencia en este contexto ha sido la \textbf{teoría de fundamentos morales} (TFM), propuesta por Haidt y Graham \cite{tmf,tmf2}. Esta teoría de psicología social propone la existencia de fundamentos morales innatos y universales que afectan los juicios éticos de las personas. Estos incluyen: cuidado/daño, equidad/trampa, lealtad/fraude, autoridad/subversión, santidad/degradación y libertad/opresión. Se plantea la presencia de estos elementos en distintas culturas, pese a la evolución de estos. Las diferencias en comportamientos y creencias éticas (y como consecuencia distintos compartimientos grupales e ideologías) son resultado del enfasis que se le da a algunos fundamentos por sobre otros.
@@ -143,7 +147,7 @@ Más allá del aprendizaje automático, la extracción de elementos que den mues
 \newp El TFD ha sido extendido tanto usando métodos semi-automáticos \cite{tfde}, usando anotadores para registrar las probabilidades de pertenencia a los fundamentos \cite{etfd}, como también usando otras herramientas semánticas como \textit{wordnet}\footnote{Wordnet es una base de datos lexical para el idoma inglés: ´\url{https://wordnet.princeton.edu/}} \cite{moral_strength}. Estos recursos pueden usarse tanto para detectar directamente palabras en texto que corresponda a las distintas dimensiones morales, como para complementar el trabajo de clasificadores automáticos en distintas tareas que pueden ser favorecidas por tener conocimiento directo de palabras con valor moral.
 
 
-\subsectionanum{Modelos que buscan predecir comportamiento humano}
+\subsection{Modelos que buscan predecir comportamiento humano}
 
 Varios son los trabajos que buscan la predicción/identificación de elementos morales en texto natural. En esta sección abordaremos algunos de ellos. Primeramente, Garten et al. 2016 busca la detección automática de retóricas morales \cite{garten}. Para esto usan el diccionario de fundamentos morales \cite{tfd}, combinado con representaciones de palabras distribuidas. Estas últimas, más conocidas por su traducción en inglés \textit{word embeddings}, corresponden a asignar un vector fijo a cada palabra. Estos vectores suelen ser obtenidos usando redes neuronales, siguiendo la hipótesis distribucional, que nos dice que palabras con significado similar aparecerán en contextos similares (y por ende deben tener una representación vectorial similar). Otro trabajo que usa categorías provenientes de la TFM es el de Xie et al. que evalua modelos en la clasificación de dilemas morales en los distintos fundamentos, gracias a lo cual concluyen que modelos de lenguaje tienen ventaja sobre modelos como las representaciones distribucionales \cite{xie}.
 
@@ -154,6 +158,54 @@ Varios son los trabajos que buscan la predicción/identificación de elementos m
 
 Los trabajos mencionados en este reporte muestran la alta variedad de formatos en los cuales se ha evaluado la presencia y grado de categorías morales, así como también la capacidad de distintos modelos de procesamiento de lenguaje natural para modelarlos. No obstante, ninguno de los artículos estudiados enfrenta un desafío tan específico como el nuestro. Los datos que poseemos tienen la ventaja de poder verse desde distintos ángulos, lo cual plantea dificultades pero también abre puertas a que las conclusiones que se puedan tomar sean reflejo de nuevos descubrimientos en el área. Para finalizar, muchos de los artículos nos confirman la pertinencia de los modelos a usar, en el caso de modelos de lenguaje, y nos sugieren algunos tipos de modelos más simples que tengan capacidad interpretativa.
 
+
+\section{Análisis exploratorio de datos}
+
+\lipsum[1]
+
+\newp \lipsum[2]
+
+\newp \lipsum[3]
+
+
+\section{Metodología}
+
+\subsection{Predicción supervisada de posturas con \textit{Naive-Bayes}}
+
+\lipsum[4]
+
+
+\subsection{Modelamiento no supervisado con \textit{Latent Dirichlet Allocation}}
+
+\lipsum[5]
+
+
+% \subsection{Modelos de lenguajes profundos}
+
+
+\section{Resultados}
+
+\subsection{Tarea de regresión}
+
+\lipsum[6]
+
+
+\subsection{Tarea de clasificación}
+
+\lipsum[7]
+
+
+% \subsection{Predicción de cambios de postura}
+
+% \lipsum[8]
+
+
+\section{Conclusiones}
+
+\lipsum[9]
+
+
+% -------------------------------------------------------------------------------------------
 
 \begin{references}
 
