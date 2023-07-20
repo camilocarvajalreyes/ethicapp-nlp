@@ -96,12 +96,23 @@ La ciencia de datos es una disciplina en constante crecimiento, en particular en
 
     \item Utilizar modelos de reconocimiento de entidades para la identificación automática de elementos textuales que denoten elementos positivos y negativos en cuanto a la calidad de la respuesta otorgada.(*)
 
-    \insertimage[\label{img:modelo3}]{img/modelo3}{scale=0.75}{Ejemplo de modelo para asistencia a la evaluación de competencia ética.}
+    \insertimage[\label{img:modelo3}]{img/modelo3}{scale=0.7}{Ejemplo de modelo para asistencia a la evaluación de competencia ética.}
 \end{enumerate}
 
-Si es que los modelos muestran una buena capacidad de predicción, se pueden usar como herramienta que a la larga servirá para evaluar la progresión de competencia ética de los estudiantes con menor inversión humana. Esto es de particular relevancia para los objetivos finales del área de ética. Por otro lado, existe un interés en verificar hasta que punto los algoritmos pueden modelar relaciones semánticas complejas como lo son las justificaciones morales de estudiantes ante a una problemática. Este es un objetivo complementario y que logrará plantear nuevas perspectivas de investigación cualquiera sea el resultado, tanto del punto de vista computacional como del estudio de la ética.
-
 \\ (*) Notar que estas tareas requieren la creación de un dataset con etiquetas especiales.
+
+\newp Si es que los modelos muestran una buena capacidad de predicción, se pueden usar como herramienta que a la larga servirá para evaluar la progresión de competencia ética de los estudiantes con menor inversión humana. Esto es de particular relevancia para los objetivos finales del área de ética. Por otro lado, existe un interés en verificar hasta que punto los algoritmos pueden modelar relaciones semánticas complejas como lo son las justificaciones morales de estudiantes ante a una problemática. Este es un objetivo complementario y que logrará plantear nuevas perspectivas de investigación cualquiera sea el resultado, tanto del punto de vista computacional como del estudio de la ética.
+
+\newp Este proyecto consistirá de la utilización de diversas técnicas de modelamiento de lenguaje que permitan tomar una fotografía global de las justificaciones de estudiantes antes las preferencias escogidas.
+De manera sistemática se considerarán los datos del caso Adela, a modo de no sobrecargar el informe de información. No obstante, los códigos para cada caso pueden encontrarse en el \href{https://github.com/camilocarvajalreyes/ethics-nlp}{repositorio de github del trabajo}. Se provee un resumen del caso Adela a continuación:
+
+\newp \textit{En Chile, la deficiencia de vitamina D es un problema serio tanto en adultos mayores como en niños. Para abordar esta preocupante situación, un grupo de profesionales creó una startup que encontró una fruta ancestral de las comunidades diaguitas con alta concentración de vitamina D. Adela, una ingeniera del equipo, diseña el proceso de producción de un nuevo alimento a base de esta fruta. Sin embargo, se enfrenta a desafíos, ya que el árbol solo crece cerca de los ríos y necesita abundante luz solar, lo que dificulta llevarlo a zonas más australes afectadas por la sequía. Además, para conservar la vitamina D durante el transporte, el equipo decide liofilizar la fruta y agregar conservantes. Aunque aún no tienen la obligación legal de integrar a las comunidades diaguitas en el proyecto, Adela escucha sus preocupaciones sobre cómo estos cambios afectarían sus tradiciones. Aunque los cambios son necesarios para ayudar a quienes sufren deficiencia de vitamina D, las comunidades prefieren mantener sus prácticas tradicionales, ya que estas son parte fundamental de su identidad.}
+
+Adela debería priorizar:
+\begin{itemize}
+    \item[(1)] Preservar el recurso natural/resguardar tradiciones
+    \item[(6)] Producir el alimento contra el déficit vitamínico
+\end{itemize}
 
 
 \section{Estado del arte}
@@ -162,35 +173,39 @@ Los trabajos mencionados en este reporte muestran la alta variedad de formatos e
 
 \section{Análisis exploratorio de datos}
 
-\insertimagerightline[\label{figure:patterns}]{img/tabla_2022.png}{0.5}{6}{Frecuencias por caso.}
+\insertimagerightline[\label{figure:freq}]{img/tabla_2022.png}{0.5}{6}{Frecuencias por caso.}
 
-\lipsum[1]
+Un análisis exploratorio adecuado se vuelve particularmente relevante a la hora de tomar conclusiones acerca de los datos textuales. Nos remitiremos al reporte de los largos de texto y $n$-gramas más frecuentes tanto de manera global como restringiéndonos a la etapa a evaluar o postura escogida por los estudiantes. A modo informativo se incluyen las frecuencias para cada uno de los casos en la figura \ref{figure:freq}.
 
-\begin{images}[\label{figure:glove}]{Visualización de textos más frecuentes del dataset para el caso Adela}
+\newp En la figura \ref{figure:tokens} se observan los $n$-gramas más frecuentes para $n \in \{ 1, 3 \}$. Se ignoraron los $2$-gramas pues en general eran concatenaciones de dos palabras que carecían de significado sin tener una tercera. En el caso de los $1$-gramas, i.e., palabras más frecuentes, destacan ``agua'', ``recursos'' y ``tradiciones'', que son elementos importantes en el platemiento del dilema.
+
+\begin{images}[\label{figure:tokens}]{Visualización de textos más frecuentes del dataset para el caso Adela}
     \addimage{adela/1_gramas_adela}{width=6.5cm}{1-gramas más frecuentes}
     \addimage{adela/3_gramas_adela}{width=8.5cm}{3-gramas más frecuentes}
     \imagesnewline
     \addimage{adela/nube_adela}{width=12cm}{Nube de palabras}
 \end{images}
 
-\newp \lipsum[2]
-
-\begin{images}[\label{figure:glove}]{Visualización de largos de texto para caso Adela, con y sin \textit{stop-words}.}
+\begin{images}[\label{figure:largos}]{Visualización de largos de texto para caso Adela, con y sin \textit{stop-words}.}
     \addimage{adela/hist_largo_adela}{width=7.5cm}{Histogramas de largo de texto}
     \addimage{adela/boxplot_largo_adela}{width=7.5cm}{Boxplot de largos de texto}
 \end{images}
 
-\insertimagerightline[\label{figure:patterns}]{img/adela/freq_adela.png}{0.55}{17}{Frecuencias de posturas por etapa en caso Adela}
+\insertimagerightline[\label{figure:freq_postura}]{img/adela/freq_adela.png}{0.65}{19}{Frecuencias de posturas por etapa en caso Adela}
 
-\newp \lipsum[3]
+En cuanto a los largos en general de los textos para el caso, estos son incluidos en la figura \ref{figure:largos}. Los largos de mensaje tienen un promedio de palabras inferior al $50\%$ para el caso Adela. También se incluye la cantidad de palabras que son relevantes dentro del texto. Para esto, se removieron las llamadas \textit{stop-words}, que son palabras que no aportan información al mensaje y solo contribuyen a la grámaica de este (algunos ejemplos incluyen ciertos artículos y conjunciones). 
 
-\subsubsection{Condicionamiento a selección de postura y etapa de actividad}
+\newp Las frecuencias de cada elección son mostradas en la figura \ref{figure:freq_postura}, donde se aprecia el hecho de que no hay un cambio brusco entre una etapa y otra, en especial entre las etapas individual 1 e individual 2. Recordemos que entre medio de esas existe una etapa grupal, para la cual se observa una mayor frecuencia de la postura (3), lo cual puede deberse al hecho de que estudiantes con posiciones similares están tratando de llegar a un consenso para colocar la valoración, lo cual por contraste disminuye la frecuencia de posiciones ``extremas'' como (1) y (6).
 
-\insertimage[\label{img:modelo3}]{img/adela/boxplot_largo_sel_adela}{scale=0.5}{Boxplots de largos de texto para cada elección de postura.}
+\subsection{Condicionamiento a selección de postura y etapa de actividad}
+
+Una hipótesis a considerar en cuanto al rol del largo de palabras en la postura de estudiantes es que aquellas posiciones extremas tendrán una explicación más larga en extensión para explicarla. Por el contrario, se observa un efecto inverso, donde las posturas (1) y (6) tienen menor largo promedio que las preferencias más moderadas. Esto puede responder al hecho de que una persona absolutamente convencida de su postura vea menos necesidad de explicar esta. De cualquier modo la diferencia es sutil, por ende no se usará la variable implícita de largo de texto para las tareas de aprendizaje, pues se postula que aportará poca información.
+
+\insertimage[\label{img:boxplot_largo_sel}]{img/adela/boxplot_largo_sel_adela}{scale=0.5}{Boxplots de largos de texto para cada elección de postura.}
 
 \insertimagerightline[\label{figure:patterns}]{img/adela/1_gramas_sel_adela.png}{0.7}{16}{Frecuencias de posturas por etapa en caso Adela}
 
-\newp \lipsum[4]
+\newp Por otro lado, las palabras más frecuentes por cada postura se condicen con la justificación más comúnmente utilizada en cada caso. Se aprecia por ejemplo que para apoyar la producción del alimente se evoca... \color{red} COMPLETAR INFO \color{black}.
 
 \insertimage[\label{img:modelo3}]{img/adela/boxplot_largo_etapa_adela}{scale=0.5}{Boxplots de largos de texto para cada etapa de la actividad.}
 
