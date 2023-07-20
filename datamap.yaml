@@ -9,6 +9,7 @@ alicia:
 adela:
   - 2021.CD2201
   - 2022.CD1201
+  - 2023.CD1100
 laura_fases:
   - 2020.CD2201:
     - Ind1:
@@ -55,6 +56,13 @@ adela_fases:
       - 5
       - 6
   - 2022.CD1201:
+    - Ind1:
+      - 2
+    - Grup:
+      - 3
+    - Ind2:
+      - 4
+  - 2023.CD1100:
     - Ind1:
       - 2
     - Grup:
