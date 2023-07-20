@@ -83,11 +83,27 @@ def process_df(df:pd.DataFrame, text_column:str, target_column:str, verbose=True
     return new_df
 
 
+def procesar_adela(df):
+    # procesamiento especial para caso Adela
+    df.loc[df['opt_left']=='Producir el alimento contra  déficit vitamínico','opt_left'] = 'Producir el alimento contra déficit vitamínico'
+    df.loc[df['opt_left']=='Preservar el recurso natural escaso.','opt_left'] = 'Preservar el recurso natural escaso'
+    df.loc[df['opt_left']=='Producir el alimento contra déficit vitamínico.','opt_left'] = 'Producir el alimento contra déficit vitamínico'
+    df.loc[df['opt_left']=='Producir el alimento contra el déficit vitamínico.','opt_left'] = 'Producir el alimento contra déficit vitamínico'
+
+    df.loc[df['opt_right']=='Resguardar las tradiciones identitarias.','opt_right'] = 'Resguardar las tradiciones identitarias'
+    df.loc[df['opt_right']=='Beneficiar la salud de niños y ancianos.','opt_right'] = 'Beneficiar la salud de niños y ancianos'
+    
+    df = df[df['opt_left'] != 'El caso parece muy irreal']
+    df = df[df['opt_left'] != 'adios']
+    df = df[df['opt_left'] != 'Tangananica']
+
+    return df
+
 
 class StemmerTokenizer:
     def __init__(self,stem=True,rmv_punctuation=False):
         self.stem = stem
-        self.rmv_words = stop_words + [',','.',':',';','...'] if rmv_punctuation else stop_words
+        self.rmv_words = stop_words + [',','.',':',';','...','(',')'] if rmv_punctuation else stop_words
         self.ps = SnowballStemmer('spanish')
     
     def __call__(self, doc):
