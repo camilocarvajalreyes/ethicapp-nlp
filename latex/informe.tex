@@ -50,7 +50,7 @@
 \inserttitle
 
 \begin{abstract}
-    La aplicaión \textit{EthicApp} es una herramienta que permite recolectar preferencias de estudiantes ante dilemas éticos y sus justificaciones. Lamentablemente, el gran volumen de datos (del orden de dos mil textos) dificulta el análisis de estos. Este trabajo aborda el uso de modelos de aprendizaje de máquina supervisados y no-supervisados para modelar la estructura textual de las respuestas y con esto apoyar el análisis que puedan hacer los equipos docentes. \color{red} Acá falta un resumen de los resultados y su pertinencia respecto al objetivo global. \color{black}
+    La aplicaión \textit{EthicApp} es una herramienta que permite recolectar preferencias de estudiantes ante dilemas éticos y sus justificaciones. Lamentablemente, el gran volumen de datos (del orden de dos mil textos) dificulta el análisis de estos. Este trabajo aborda el uso de modelos de aprendizaje de máquina supervisados y no-supervisados para modelar la estructura textual de las respuestas y con esto apoyar el análisis que puedan hacer los equipos docentes. La metodología empleada ofrece una visión general de las respuestas y conceptos utilizados, lo que permitirá tomar decisiones informadas y justificadas para enseñar ética en la facultad de ciencias físicas y matemáticas.
 \end{abstract}
 
 
@@ -110,8 +110,8 @@ De manera sistemática se considerarán los datos del caso Adela, a modo de no s
 
 Adela debería priorizar:
 \begin{itemize}
-    \item[(1)] Preservar el recurso natural/resguardar tradiciones
-    \item[(6)] Producir el alimento contra el déficit vitamínico
+    \item[(1)] Producir el alimento contra el déficit
+    \item[(6)] Resguardar las tradiciones indígenas
 \end{itemize}
 
 
@@ -173,11 +173,22 @@ Los trabajos mencionados en este reporte muestran la alta variedad de formatos e
 
 \section{Análisis exploratorio de datos}
 
-\insertimagerightline[\label{figure:freq}]{img/tabla_2022.png}{0.5}{6}{Frecuencias por caso.}
+Un análisis exploratorio adecuado se vuelve particularmente relevante a la hora de tomar conclusiones acerca de los datos textuales. Nos remitiremos al reporte de los largos de texto y $n$-gramas más frecuentes tanto de manera global como restringiéndonos a la etapa a evaluar o postura escogida por los estudiantes. A modo informativo se incluyen las frecuencias para cada uno de los casos en la tabla \ref{tab:freqs_casos}.
 
-Un análisis exploratorio adecuado se vuelve particularmente relevante a la hora de tomar conclusiones acerca de los datos textuales. Nos remitiremos al reporte de los largos de texto y $n$-gramas más frecuentes tanto de manera global como restringiéndonos a la etapa a evaluar o postura escogida por los estudiantes. A modo informativo se incluyen las frecuencias para cada uno de los casos en la figura \ref{figure:freq}.
-
-\newp En la figura \ref{figure:tokens} se observan los $n$-gramas más frecuentes para $n \in \{ 1, 3 \}$. Se ignoraron los $2$-gramas pues en general eran concatenaciones de dos palabras que carecían de significado sin tener una tercera. En el caso de los $1$-gramas, i.e., palabras más frecuentes, destacan ``agua'', ``recursos'' y ``tradiciones'', que son elementos importantes en el platemiento del dilema.
+% \insertimagerightline[\label{figure:freq}]{img/tabla_2022.png}{0.5}{6}{Frecuencias por caso.}
+\begin{table}[htbp]
+\centering
+\caption{Resultados de clasificación de posturas para caso Adela}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{Caso}  & \textbf{Cursos} & \textbf{Cantidad de estudiantes} & \textbf{Cantidad de grupos} \\ \hline
+Julieta        & \textbf{1}      & \textit{819}                     & 247                         \\ \hline
+\textbf{Adela} & \textbf{3}      & \textbf{1866}                    & \textbf{515}                \\ \hline
+Laura          & 1               & 602                              & 335                         \\ \hline
+Alicia         & 2               & 1628                             & 549                         \\ \hline
+\end{tabular}
+\label{tab:freqs_casos}
+\end{table}
 
 \begin{images}[\label{figure:tokens}]{Visualización de textos más frecuentes del dataset para el caso Adela}
     \addimage{adela/1_gramas_adela}{width=6.5cm}{1-gramas más frecuentes}
@@ -185,6 +196,8 @@ Un análisis exploratorio adecuado se vuelve particularmente relevante a la hora
     \imagesnewline
     \addimage{adela/nube_adela}{width=12cm}{Nube de palabras}
 \end{images}
+
+En la figura \ref{figure:tokens} se observan los $n$-gramas más frecuentes para $n \in \{ 1, 3 \}$. Se ignoraron los $2$-gramas pues en general eran concatenaciones de dos palabras que carecían de significado sin tener una tercera. En el caso de los $1$-gramas, i.e., palabras más frecuentes, destacan ``agua'', ``recursos'' y ``tradiciones'', que son elementos importantes en el platemiento del dilema.
 
 \begin{images}[\label{figure:largos}]{Visualización de largos de texto para caso Adela, con y sin \textit{stop-words}.}
     \addimage{adela/hist_largo_adela}{width=7.5cm}{Histogramas de largo de texto}
@@ -205,7 +218,7 @@ Una hipótesis a considerar en cuanto al rol del largo de palabras en la postura
 
 \insertimagerightline[\label{figure:patterns}]{img/adela/1_gramas_sel_adela.png}{0.7}{16}{Frecuencias de posturas por etapa en caso Adela}
 
-\newp Por otro lado, las palabras más frecuentes por cada postura se condicen con la justificación más comúnmente utilizada en cada caso. Se aprecia por ejemplo que para apoyar la producción del alimente se evoca... \color{red} COMPLETAR INFO \color{black}.
+\newp Por otro lado, las palabras más frecuentes por cada postura se condicen con la justificación más comúnmente utilizada en cada caso. Se aprecia por ejemplo que para apoyar la producción del alimento se evocan conceptos como ``salud'' y ``personas'', asu como también acciones como ``producir'' y ``priorizar'', este último reflejando que estudiantes que asumen esa postura probablemente priorizan el bien común y/o salud de niños y ancianos en su decisión. En contraste, sustantivos como ``cultura'' y ``pueblos'' (en plural) aparecen al escoger resguardar las tradiciones. Así mismo, acciones como ``resguardar'', ``respetar'' y ``debería'' son usadas con el mismo propósito. Este simple análisis nos permite también identificar palabras ampliamente repetidas sin importar la postura del estudiante, como es el caso de ``tradiciones''.
 
 \insertimage[\label{img:modelo3}]{img/adela/boxplot_largo_etapa_adela}{scale=0.5}{Boxplots de largos de texto para cada etapa de la actividad.}
 
@@ -237,6 +250,30 @@ $\mathbb{P}(j|C_k)$ también se puede estimar, tomando la proporción de documen
 
 La modelización de tópicos (\textit{topic modelling} en ingles) se refiere a un tipo de modelado estadístico en el procesamiento del lenguaje natural que tiene como objetivo extraer la estructura semántica oculta de un texto. La suposición subyacente es que un documento está compuesto por una mezcla de temas abstractos, y los métodos existentes infieren esos temas basándose en las palabras de cada documento. La Asignación Latente de Dirichlet (LDA, por sus siglas en inglés) es el modelo de temas más ampliamente utilizado. Los documentos se representan como mezclas aleatorias de temas latentes. De manera similar, los temas se caracterizan por una distribución sobre todas las palabras.
 
+\newp Dado que el número de temas a considerar en LDA es un hiperparámetro que debe establecerse de antemano, utilizaremos la familia de métricas "coherencia", que se suele usar para evaluar la calidad e interpretabilidad de los temas generados por un modelo de temas. Esta familia de métricas utiliza las relaciones entre palabras dentro de cada tópico y está diseñada para capturar la similitud semántica entre palabras dentro de un tema, con el objetivo de identificar temas que contengan palabras que tienden a frecuentemente al mismo tiempo en documentos. Los temas con una mayor coherencia se consideran más interpretables y más propensos a representar un concepto concreto.
+
+% Since the number of topics to consider in LDA is a hyperparameter that needs to be set in advance. We will hence use the ``coherence'' family of metrics, which is often used to evaluate the quality and interpretability of the topics generated by a topic model. Reportedly, it uses the relationships between words within each topic and it is designed to capture the semantic similarity between words within a topic, aiming to identify topics that contain words that tend to co-occur frequently in real-world documents. Topics with greater coherence are considered more interpretable and more likely to represent a concrete concept.
+
+\newp De las diversas métricas de coherencia comúnmente utilizadas en el modelado de temas, usaremos la coherencia $C_v$. Esta métrica calcula la coherencia basada en la co-ocurrencia de palabras dentro de un tema, y busca medir en qué medida las palabras en un tema tienden a aparecer juntas en el mismo contexto. Para más detalles sobre cómo se calcula esta métrica, nos referimos a \textit{Syed \& Spruit (2017)} \cite{coherence}.
+
+% Out of the several coherence metrics commonly used in topic modeling, we will use the $C_v$ coherence. This metric calculates the coherence based on the co-occurrence of words within a topic. It aims to measure the extent to which words in a topic tend to appear together in the same context. We refer to \textit{Syed and Spruit (2017)} for the details on how such metric is computed \cite{coherence}.
+
+\newp Para poder visualizar los tópicos de manera adecuada se usarán los siguientes conceptos vistos en el curso:
+\begin{itemize}
+    \item \textbf{Teoría de la información}: Se utiliza la divergencia de Jensen-Shanno, que es una métrica de disimilitud entre distribuciones de probabilidad. Dadas dos distribuciones de probabilidad, $p$ y $q$, la divergencia de Jensen-Shannon se define de la siguiente manera:
+    $$ \frac{1}{2}(KL(p\|m) + KL(q \| m) ) \,,$$
+    donde $m = \frac{1}{2}(p + q)$ es la distribución promedio y $KL$ denota la divergencia de Kullback-Leibler.
+    \item Reducción de dimensionalidad: se utiliza el método \textit{multidimensional scalling}, que puede traducirse como ``escalamiento multidimensional''. Esta es una reducción de dimensionalidad no lineal en la cual la proyección encontrada pretende que las distancias en el nuevo espacio (en este caso de dos dimensiones) difiera lo menos posible de las distancias en el espacio original.
+\end{itemize}
+
+% The Jensen-Shannon divergence (JSD) is a measure of similarity or divergence between probability distributions. It is based on the Kullback-Leibler divergence (KL divergence) and is commonly used in information theory and statistics. Given two probability distributions, P and Q, the Jensen-Shannon divergence (JSD) is defined as follows:
+$$ \frac{1}{2}(KL(p\|m) + KL(q \| m) ) $$
+% where D(P || Q) represents the Kullback-Leibler divergence from distribution P to distribution Q and M is the average of the two distributions and is defined as M = 0.5 * (P + Q).
+% The JSD measures the similarity between two distributions by first computing the KL divergence between each distribution and the average distribution (M), and then taking the average of these two KL divergences. The JSD ranges between 0 and 1, where 0 indicates that the two distributions are identical, and 1 indicates that they are completely dissimilar.
+
+Esto en base a la metodología de visualización de tópicos que se propone en \textit{Sievert \& Shirley (2014)} \cite{viz}. El algoritmo, llámese como LDAvis, presenta una vista global del modelo de temas que responde preguntas sobre la prevalencia de cada tema y cómo se relacionan entre sí. En esta visualziación, los temas se representan como círculos en un plano, y los centros de los círculos se determinan calculando la distancia entre los temas y utilizando \textit{multidimensional scaling} para proyectar las distancias inter-temas en dos dimensiones. La distribución de términos de un conjunto de temas se define como el promedio ponderado de las distribuciones de términos de los temas individuales en el conjunto.
+
+% The algorithm, namely LDAvis, presents a global view of the topic model which answers questions about the prevalence of each topic and how the topics relate to each other . In this view, the topics are plotted as circles in a two-dimensional plane, with the centers of the circles determined by computing the distance between topics and using multidimensional scaling to project the inter-topic distances onto two dimensions. Each topic's overall prevalence is encoded using the area of the circle, with topics sorted in decreasing order of prevalence. The term distribution of a cluster of topics is defined as the weighted average of the term distributions of the individual topics in the cluster.  % gpt
 
 % \subsection{Modelos de lenguajes profundos}
 % https://www.overleaf.com/project/623ddd7aeb06ec285ddc6300
@@ -246,7 +283,25 @@ La modelización de tópicos (\textit{topic modelling} en ingles) se refiere a u
 
 \subsection{Tarea de clasificación}
 
-\lipsum[7]
+La tarea de clasificación arroja las siguientes métricas para los cuatro casos estudiados, mostrados en la tabla \ref{tab:NB_results}.
+
+\begin{table}[htbp]
+\centering
+\caption{Resumen de resultados de clasificación por caso}
+\begin{tabular}{l|llll|llll|}
+\cline{2-9}
+                                     & \multicolumn{4}{c|}{\textbf{Métrica multiclase}}                                                                                          & \multicolumn{4}{c|}{\textbf{Métrica binaria}}                                                                                                 \\ \hline
+\multicolumn{1}{|l|}{\textbf{caso}}  & \multicolumn{1}{l|}{\textbf{precisión}} & \multicolumn{1}{l|}{\textbf{sensib.}} & \multicolumn{1}{l|}{\textbf{f1}}   & \textbf{exactitud} & \multicolumn{1}{l|}{\textbf{precisión}} & \multicolumn{1}{l|}{\textbf{sensib.}} & \multicolumn{1}{l|}{\textbf{f1}}   & \textbf{exactitud}     \\ \hline
+\multicolumn{1}{|l|}{Julieta}        & \multicolumn{1}{l|}{0.36}               & \multicolumn{1}{l|}{\textit{0.37}}    & \multicolumn{1}{l|}{0.36}          & \textit{0.37}      & \multicolumn{1}{l|}{0.70}               & \multicolumn{1}{l|}{\textit{0.70}}    & \multicolumn{1}{l|}{0.70}          & \textit{0.70}          \\ \hline
+\multicolumn{1}{|l|}{\textbf{Adela}} & \multicolumn{1}{l|}{\textbf{0.43}}      & \multicolumn{1}{l|}{\textbf{0.43}}    & \multicolumn{1}{l|}{\textbf{0.43}} & \textbf{0.43}      & \multicolumn{1}{l|}{\textbf{0.79}}      & \multicolumn{1}{l|}{\textbf{0.79}}    & \multicolumn{1}{l|}{\textbf{0.79}} & \textit{\textbf{0.79}} \\ \hline
+\multicolumn{1}{|l|}{Laura}          & \multicolumn{1}{l|}{0.47}               & \multicolumn{1}{l|}{\textit{0.48}}    & \multicolumn{1}{l|}{0.48}          & \textit{0.48}      & \multicolumn{1}{l|}{0.77}               & \multicolumn{1}{l|}{\textit{0.77}}    & \multicolumn{1}{l|}{0.77}          & \textit{0.77}          \\ \hline
+\multicolumn{1}{|l|}{Alicia}         & \multicolumn{1}{l|}{0.44}               & \multicolumn{1}{l|}{\textit{0.45}}    & \multicolumn{1}{l|}{0.44}          & \textit{0.45}      & \multicolumn{1}{l|}{0.83}               & \multicolumn{1}{l|}{\textit{0.83}}    & \multicolumn{1}{l|}{0.83}          & \textit{0.83}          \\ \hline
+\end{tabular}
+\label{tab:NB_results}
+\end{table}
+
+\newp Por otro lado, mostramos el detalle de la clasificación para el caso Adela. La tabla \ref{tab:detalle_adela} muestra la tarea de clasificación fina multiclase, mientras que la versión binaria se muestra en la tabla \ref{tab:detalle_adela_bin}.
+
 
 \begin{table}[htbp]
 \centering
@@ -254,21 +309,18 @@ La modelización de tópicos (\textit{topic modelling} en ingles) se refiere a u
 \begin{tabular}{|l|l|l|l|l|}
 \hline
 \textbf{}    & \textbf{precision} & \textbf{recall} & \textbf{f1-score} & \textbf{support} \\ \hline
-1            & 0.39               & 0.23            & 0.29              & 203              \\ \hline
-2            & 0.56               & 0.63            & 0.59              & 629              \\ \hline
-3            & 0.42               & 0.40            & 0.41              & 406              \\ \hline
-4            & 0.28               & 0.31            & 0.29              & 221              \\ \hline
-5            & 0.32               & 0.38            & 0.35              & 142              \\ \hline
-6            & 0.09               & 0.05            & 0.06              & 44               \\ \hline
-accuracy     &                    &                 & 0.44              & 1645             \\ \hline
-macro avg    & 0.34               & 0.33            & 0.33              & 1645             \\ \hline
-weighted avg & 0.43               & 0.44            & 0.44              & 1645             \\ \hline
+(1) Producir el alimento contra el déficit            & 0.40               & 0.38            & 0.39              & 157              \\ \hline
+(2)            & 0.47               & 0.47            & 0.47              & 363              \\ \hline
+(3)            & 0.47               & 0.54            & 0.50              & 434              \\ \hline
+(4)            & 0.35               & 0.32            & 0.33              & 257              \\ \hline
+(5)           & 0.41               & 0.40            & 0.41              & 173              \\ \hline
+(6) Resguardar las tradiciones indígenas            & 0.37               & 0.19            & 0.25              & 57               \\ \hline
+accuracy     &                    &                 & 0.43              & 1441             \\ \hline
+macro avg    & 0.41               & 0.38            & 0.39              & 1441             \\ \hline
+weighted avg & 0.43               & 0.43            & 0.43              & 1441             \\ \hline
 \end{tabular}
+\label{tab:detalle_adela}
 \end{table}
-
-\insertimage[\label{img:modelo3}]{img/adela/nb_adela_cm}{scale=0.75}{Matriz de confusión de clasificación caso Adela.}
-
-\subsubsection{Clasificación Binaria}
 
 \begin{table}[htbp]
 \centering
@@ -276,13 +328,23 @@ weighted avg & 0.43               & 0.44            & 0.44              & 1645  
 \begin{tabular}{|l|l|l|l|l|}
 \hline
 \textbf{}    & \textbf{precision} & \textbf{recall} & \textbf{f1-score} & \textbf{support} \\ \hline
-1            & 0.83               & 0.94            & 0.89              & 1239              \\ \hline
-6            & 0.71               & 0.43            & 0.54              & 406               \\ \hline
-accuracy     &                    &                 & 0.82              & 1645             \\ \hline
-macro avg    & 0.77               & 0.69            & 0.71              & 1645             \\ \hline
-weighted avg & 0.80               & 0.82            & 0.80              & 1645             \\ \hline
+(1) Producir el alimento contra el déficit            & 0.85               & 0.83            & 0.84              & 954              \\ \hline
+(6) Resguardar las tradiciones indígenas            & 0.69               & 0.71            & 0.70              & 487               \\ \hline
+accuracy     &                    &                 & 0.79              & 1441             \\ \hline
+macro avg    & 0.77               & 0.77            & 0.77              & 1441             \\ \hline
+weighted avg & 0.79               & 0.79            & 0.79              & 1441             \\ \hline
 \end{tabular}
+\label{tab:detalle_adela_bin}
 \end{table}
+
+% (1) Producir el alimento contra el déficit
+% (6) Resguardar las tradiciones indígenas
+
+\newp Para entender la naturaleza de la complejidad de la clasificación fina, se muestra la matriz de confusión en la figura \ref{img:cm_nb}. Se aprecia como hay una ligera tendencia a etiquetar texto como de clase (2), que es aquella mayoritaria. Esto es un problema recurrente en cualquier tipo de modelo, pero lo es con mayor razón en un método Naive-Bayes, pues la predicción consiste en el voto de las palabras presentes, que naturalmente aparecerán más en aquellas clases recurrrentes. 
+
+\newp Cabe señalar que este efecto se reduzco drásticamente respecto a la versión mostrada en la presentación de avance. En esta, la matriz de confusión estaba radicalmente cargada hacia la clase mayoritaria, confundiendo cualquier clase con la clase (2). En esta versión la confusión ocurre más fuertemente con las clases vecinas (1) y (3), que corresponden a grados de convencimiento de la misma postura. Esto grafica la dificultad de la clasificación fina respecto a la versión binaria. La mejora de esta situación y de las métricas de la clasificación multiclase en general se le atribuye al procesamiento adecuado realizado al texto, no realizado en una primera instancia (incluyendo la elimación de ruido, separación de casos en Adela y eliminación de puntuación). A modo de referencia, la sensibilidad de la clase (2) antes de aplicar la metodología completa fue de 86\%, contra menos del 6\% de las clases (1), (2) y (6). Se conjetura que realizar un sobresampleo o subsampleo podría mejorar lo anterior aún más, pero nos conformamos con la mejora señalada en el la versión actual.
+
+\insertimage[\label{img:cm_nb}]{img/adela/nb_adela_cm}{scale=0.75}{Matriz de confusión de clasificación caso Adela.}
 
 
 \subsection{Interpretabilidad de modelos}
@@ -292,32 +354,69 @@ weighted avg & 0.80               & 0.82            & 0.80              & 1645  
 \caption{Palabras con más probabilidad por cada clase}
 \begin{tabular}{l|ll|ll|}
 \cline{2-5}
-                                & \multicolumn{2}{l|}{\textbf{Producir el alimento}}                       & \multicolumn{2}{l|}{\textbf{Resguardar tradiciones/recurso}}            \\ \hline
-\multicolumn{1}{|l|}{\textbf{}} & \multicolumn{1}{l|}{\textbf{Palabra}}               & \textbf{Probabilidad} & \multicolumn{1}{l|}{\textbf{Palabra}}              & \textbf{Probabilidad} \\ \hline
-\multicolumn{1}{|l|}{1}         & \multicolumn{1}{l|}{\textit{\textbf{localidad}}}    & 0.9668010706219343 & \multicolumn{1}{l|}{\textit{\textbf{ancestral}}}   & 0.8854034049522704 \\ \hline
-\multicolumn{1}{|l|}{2}         & \multicolumn{1}{l|}{\textit{\textbf{agotar}}}       & 0.9655681541235328 & \multicolumn{1}{l|}{\textit{\textbf{siglos}}}      & 0.8225615683211234 \\ \hline
-\multicolumn{1}{|l|}{3}         & \multicolumn{1}{l|}{\textit{\textbf{renovable}}}    & 0.9642401314198153 & \multicolumn{1}{l|}{\textit{\textbf{llevarlo}}}    & 0.6986026158057846 \\ \hline
-\multicolumn{1}{|l|}{4}         & \multicolumn{1}{l|}{\textit{\textbf{limitado}}}     & 0.9612510695138682 & \multicolumn{1}{l|}{\textit{\textbf{propiedades}}} & 0.6899382168962785 \\ \hline
-\multicolumn{1}{|l|}{5}         & \multicolumn{1}{l|}{\textit{\textbf{escasea}}}      & 0.9595609803445707 & \multicolumn{1}{l|}{\textit{\textbf{pasen}}}       & 0.6759654794382005 \\ \hline
-\multicolumn{1}{|l|}{6}         & \multicolumn{1}{l|}{\textit{\textbf{parecer}}}      & 0.9577167362530623 & \multicolumn{1}{l|}{\textit{\textbf{pasando}}}     & 0.657596180886742  \\ \hline
-\multicolumn{1}{|l|}{7}         & \multicolumn{1}{l|}{\textit{\textbf{hablando}}}     & 0.9577167362530623 & \multicolumn{1}{l|}{\textit{\textbf{adele}}}       & 0.6496517790919291 \\ \hline
-\multicolumn{1}{|l|}{8}         & \multicolumn{1}{l|}{\textit{\textbf{causar}}}       & 0.9577167362530623 & \multicolumn{1}{l|}{\textit{\textbf{cultivado}}}   & 0.6326032091783609 \\ \hline
-\multicolumn{1}{|l|}{9}         & \multicolumn{1}{l|}{\textit{\textbf{perjudicaría}}} & 0.9534729522199789 & \multicolumn{1}{l|}{\textit{\textbf{ingeniera}}}   & 0.613810540612241  \\ \hline
-\multicolumn{1}{|l|}{10}        & \multicolumn{1}{l|}{\textit{\textbf{escaso}}}       & 0.9525198782868932 & \multicolumn{1}{l|}{\textit{\textbf{hacen}}}       & 0.613810540612241  \\ \hline
+                                & \multicolumn{2}{l|}{\textbf{Producir el alimento}}                        & \multicolumn{2}{l|}{\textbf{Resguardar tradiciones}}                          \\ \hline
+\multicolumn{1}{|l|}{\textbf{}} & \multicolumn{1}{l|}{\textbf{Palabra}}             & \textbf{Probabilidad} & \multicolumn{1}{l|}{\textbf{Palabra}}                 & \textbf{Probabilidad} \\ \hline
+\multicolumn{1}{|l|}{1}         & \multicolumn{1}{l|}{\textit{\textbf{salvar}}}     & 0.9850757167193909    & \multicolumn{1}{l|}{\textit{\textbf{siglos}}}         & 0.8807510221140485    \\ \hline
+\multicolumn{1}{|l|}{2}         & \multicolumn{1}{l|}{\textit{\textbf{juego}}}      & 0.9589416426994265    & \multicolumn{1}{l|}{\textit{\textbf{suplementos}}}    & 0.8630617786067957    \\ \hline
+\multicolumn{1}{|l|}{3}         & \multicolumn{1}{l|}{\textit{\textbf{vidas}}}      & 0.9525060938146097    & \multicolumn{1}{l|}{\textit{\textbf{sol}}}            & 0.8253861418636597    \\ \hline
+\multicolumn{1}{|l|}{4}         & \multicolumn{1}{l|}{\textit{\textbf{tribu}}}      & 0.9507237155401059    & \multicolumn{1}{l|}{\textit{\textbf{existen}}}        & 0.8227740010872212    \\ \hline
+\multicolumn{1}{|l|}{5}         & \multicolumn{1}{l|}{\textit{\textbf{religiosas}}} & 0.9481281470801085    & \multicolumn{1}{l|}{\textit{\textbf{única}}}          & 0.7700217160507917    \\ \hline
+\multicolumn{1}{|l|}{6}         & \multicolumn{1}{l|}{\textit{\textbf{poniendo}}}   & 0.9420201060316521    & \multicolumn{1}{l|}{\textit{\textbf{usuario}}}        & 0.761934254557929     \\ \hline
+\multicolumn{1}{|l|}{7}         & \multicolumn{1}{l|}{\textit{\textbf{riesgo}}}     & 0.9383929112652638    & \multicolumn{1}{l|}{\textit{\textbf{consentimiento}}} & 0.761934254557929     \\ \hline
+\multicolumn{1}{|l|}{8}         & \multicolumn{1}{l|}{\textit{\textbf{tiempos}}}    & 0.9342815991664724    & \multicolumn{1}{l|}{\textit{\textbf{integridad}}}     & 0.7303224790335253    \\ \hline
+\multicolumn{1}{|l|}{9}         & \multicolumn{1}{l|}{\textit{\textbf{cambian}}}    & 0.9342815991664724    & \multicolumn{1}{l|}{\textit{\textbf{sacar}}}          & 0.7242191780159098    \\ \hline
+\multicolumn{1}{|l|}{10}        & \multicolumn{1}{l|}{\textit{\textbf{ayudaria}}}   & 0.9342815991664724    & \multicolumn{1}{l|}{\textit{\textbf{obtener}}}        & 0.723129422679366     \\ \hline
 \end{tabular}
+\label{tab:prob_words_NB}
 \end{table}
 
 
 \subsection{Modelamiento de tópicos}
 
-\lipsum[8]
+Se obtuvieron los siguientes números de tópicos en cada case estudiado:
+\begin{itemize}
+    \item Julieta: 2 tópicos
+    \item Adela: 4 tópicos
+    \item Laura: 4 tópicos
+    \item Alicia: 4 tópicos
+\end{itemize}
+En la tabla \ref{tab:topicos} reportamos tanto la magnitud de cada tópico como los principales tokens que lo componen para el caso Adela.
 
-\insertimage[\label{img:modelo3}]{img/adela/LDA_viz}{scale=0.4}{Visualización de tópicos ajustados con LDA.}
+\begin{table}[htbp]
+\centering
+\caption{Términos más importantes por tópico.}
+    \begin{tabular}{l|llll|}
+        \cline{2-5}
+                                                           & \multicolumn{4}{c|}{\textbf{Tópico (porcentaje de palabras)}}                                                                                                                   \\ \hline
+        \multicolumn{1}{|l|}{Prioridad} & \multicolumn{1}{l|}{\textbf{Tópico 1 (42,4\%)}} & \multicolumn{1}{l|}{\textbf{Tópico 2 (33,5\%)}} & \multicolumn{1}{l|}{\textbf{Tópico 3 (14,9\%)}} & \textbf{Tópico 4 (9,2\%)} \\ \hline
+        \multicolumn{1}{|l|}{1}                            & \multicolumn{1}{l|}{\textit{tradiciones}}       & \multicolumn{1}{l|}{tradiciones}                & \multicolumn{1}{l|}{\textit{tradiciones}}       & pueblo                    \\ \hline
+        \multicolumn{1}{|l|}{2}                            & \multicolumn{1}{l|}{\textit{alimento}}          & \multicolumn{1}{l|}{alimento}                   & \multicolumn{1}{l|}{\textit{fruto}}             & si                        \\ \hline
+        \multicolumn{1}{|l|}{3}                            & \multicolumn{1}{l|}{\textit{pueblo}}            & \multicolumn{1}{l|}{personas}                   & \multicolumn{1}{l|}{\textit{pueblo}}            & originario                \\ \hline
+        \multicolumn{1}{|l|}{4}                            & \multicolumn{1}{l|}{\textit{llegar}}            & \multicolumn{1}{l|}{salud}                      & \multicolumn{1}{l|}{\textit{fruta}}             & producción                \\ \hline
+        \multicolumn{1}{|l|}{5}                            & \multicolumn{1}{l|}{\textit{importante}}        & \multicolumn{1}{l|}{importante}                 & \multicolumn{1}{l|}{\textit{si}}                & acuerdo                   \\ \hline
+        \multicolumn{1}{|l|}{6}                            & \multicolumn{1}{l|}{\textit{acuerdo}}           & \multicolumn{1}{l|}{pueblo}                     & \multicolumn{1}{l|}{\textit{pueblos}}           & producto                  \\ \hline
+        \multicolumn{1}{|l|}{7}                            & \multicolumn{1}{l|}{\textit{llevar}}            & \multicolumn{1}{l|}{producir}                   & \multicolumn{1}{l|}{\textit{ser}}               & bien                      \\ \hline
+        \multicolumn{1}{|l|}{8}                            & \multicolumn{1}{l|}{\textit{producción}}        & \multicolumn{1}{l|}{niños}                      & \multicolumn{1}{l|}{\textit{proyecto}}          & alimento                  \\ \hline
+        \multicolumn{1}{|l|}{9}                            & \multicolumn{1}{l|}{\textit{originario}}        & \multicolumn{1}{l|}{priorizar}                  & \multicolumn{1}{l|}{\textit{originarios}}       & puede                     \\ \hline
+        \multicolumn{1}{|l|}{10}                           & \multicolumn{1}{l|}{\textit{Producir}}          & \multicolumn{1}{l|}{puede}                      & \multicolumn{1}{l|}{\textit{manera}}            & tradición                 \\ \hline
+        \end{tabular}
+    \label{tab:topicos}
+\end{table}
+
+Por otro lado en la figura \ref{img:lda_viz} mostramos una visualización de los tópicos obtenidos utilizando la biblioteca de python \textit{pyLDAvis} \cite{viz}. Esta nos muestra un grado relativamente alto de sobreposición entre los tópicos 1 y 2, que son los más numerosos. Esto se condice con la similitud de los términos utilizados, poniendo en cuestión la optimalidad del número de tópicos encontrado con la métrica de coherencia. Se destaca el tópico número dos, con lo cual a la dereche de la figura se pueden ver la frecuencia relativa de las palabras más importantes de tal tema encontrado.
+
+\insertimage[\label{img:lda_viz}]{img/adela/LDA_viz}{scale=0.4}{Visualización de tópicos ajustados con LDA.}
 
 
 \section{Conclusiones}
 
-\lipsum[9]
+Los modelos usados en este trabajo fueron modelos simples basados en conteos de palabras, pero cuya formulación probabilística los dota de la capacidad de clasificar nuevos textos, tanto de manera supervisada como no supervisada. 
+
+\newp Estas técnicas son además interpretables. En el caso específico de LDA y Naive-Bayes, tenemos tanto una distribución de palabras por clase como una distribución de clase por palabra, lo cual es particularmente útil para el equipo de la unidad de ética tome conclusiones respecto al lenguaje empleado en las decisiones de estudiantes. Esto marca un contraste con los métodos de aprendizaje profundo. Estos han mostrado una gran capacidad predictiva, pero esta capacidad es inútil si en este caso particular, pues la predicción como tal no es de interés directo de la unidad de ética.
+
+\newp Por lo demás, el desarrollo de un método de aprendizaje profundo que si sea capaz de declarar aquellas variables (deseablemente, conceptos) que sean destacables a la hora de reflejar la competencia ética, es un trabajo futuro a considerar. Existe una buena perspectiva de que funcione dada la naturaleza de los textos que han mostrado tanto el análisis exploratorio como los modelos utilizados y sus métricas de desempeño. En particular modelos profundos podrían captar situaciones semánticas que modelos basados en conteo no logran reflejar, como lo son las negaciones. 
+
+\newp En cualquier caso, el presente trabajo muestra una metodología con la capacidad de dar una fotografía global de la naturaleza de las respuestas y los conceptos empleados para justificarla. Se espera que esta herramienta ayude a graficar la coherencia de las respuestas cada año, con lo cual se pueden tomar decisiones informadas y justificadas respecto a la metodología para la enseñanza de la ética en la facultad de ciencias físicas y matemáticas.
 
 \iffalse
 \begin{images}[\label{figure:glove}]{Descripción general}
@@ -376,7 +475,11 @@ weighted avg & 0.80               & 0.82            & 0.80              & 1645  
 
     \bibitem{lda} Blei, D. M., Ng, A. Y., & Jordan, M. I. (2003). Latent dirichlet allocation. The Journal of Machine Learning Research, 3(null), 993–1022.
 
+    \bibitem{coherence} Syed, S., & Spruit, M. (2017, October). Full-text or abstract? examining topic coherence scores using latent dirichlet allocation. In 2017 IEEE International conference on data science and advanced analytics (DSAA) (pp. 165-174). IEEE. \url{https://doi.org/10.1109/DSAA.2017.61}
+
     \bibitem{bert} Devlin, J., Chang, M.-W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers), 4171–4186. \url{https://doi.org/10.18653/v1/N19-1423}
+
+    \bibitem{viz} Sievert, C., & Shirley, K. (2014, June). LDAvis: A method for visualizing and interpreting topics. In Proceedings of the workshop on interactive language learning, visualization, and interfaces (pp. 63-70). \url{https://github.com/bmabey/pyLDAvis}
 
     \bibitem{alh} Alhassan, A., Zhang, J., & Schlegel, V. (2022). `Am I the Bad One’? Predicting the Moral Judgement of the Crowd Using Pre–trained Language Models. Proceedings of the Thirteenth Language Resources and Evaluation Conference, 267–276. \url{https://aclanthology.org/2022.lrec-1.28}
 
