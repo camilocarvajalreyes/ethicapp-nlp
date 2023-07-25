@@ -18,7 +18,7 @@ Pese al potencial de mejora, la metodología propuesta ofrece una visión genera
 
 ## Contenidos
 Se muestran los Notebooks para los modelos relevantes para el caso Adela.
-- [Exploración de datos](exploracion_caso_adela.ipynb)
+- [Exploración de datos](exploracion-datos/exploracion_caso_adela.ipynb)
 - [Modelo de clasificación Naive-Bayes](naive-bayes/NB_adela.ipynb)
 - [Modelo de tópicos LDA](topic-modelling/TM_adela.ipynb)
 - [Modelo de tópicos BERTopic](topic-modelling/BT_adela.ipynb)
