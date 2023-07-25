@@ -156,3 +156,12 @@ def make_BoW_preprocess(tokenizer:StemmerTokenizer,column:str,max_ngram:int=2,mi
     )
 
     return preprocessing
+
+
+def df_to_list(df,column,tokenizer=None):
+    # converts the corresponding df column with text to a list of strings
+    if tokenizer is not None:
+        docs = df[column].apply(lambda text: ' '.join(tokenizer(text)))
+    else:
+        docs = df[column]
+    return docs.to_list()
