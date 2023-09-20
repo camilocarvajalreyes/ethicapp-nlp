@@ -32,7 +32,11 @@ except FileNotFoundError:
 
 
 def files_in_folder(folder):
-    return [file for file in os.listdir(folder) if '.csv' in file]
+    try:
+        files = [file for file in os.listdir(folder) if '.csv' in file]
+    except FileNotFoundError:
+        files = []
+    return files
 
 
 def iteraciones_datamap(nombre):
@@ -45,7 +49,7 @@ def iteraciones_datamap(nombre):
     return iteraciones
 
 
-def df_caso(nombre:str) -> pd.DataFrame:
+def df_caso(nombre:str,chat=False) -> pd.DataFrame:
     """
     Retorna un dataframe de pandas con todos los contenidos del caso en cuestión
 
@@ -62,7 +66,10 @@ def df_caso(nombre:str) -> pd.DataFrame:
     iteraciones = iteraciones_datamap(nombre)
     dfs = []
     for curso in iteraciones:
-            folder = datamap['parent']+curso+'/'
+            if chat:
+                folder = datamap['parent']+curso+'/chat/'
+            else:
+                folder = datamap['parent']+curso+'/'
             try:
                 files = files_in_folder(folder)
             except FileNotFoundError:
