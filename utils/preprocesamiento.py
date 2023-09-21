@@ -100,6 +100,28 @@ def procesar_adela(df):
     return df
 
 
+def procesar_alicia(df):
+    # procesamiento especial caso Alicia
+    df.loc[df['opt_left']=='Por sobre  cualquier otra  consideración','opt_left'] = 'Por sobre cualquier otra consideración'
+    df.loc[df['opt_left']=='Los criterios  técnicos del  proyecto y de los  usuarios','opt_left'] = 'Los criterios técnicos del proyecto y de los usuarios'
+
+    df.loc[df['opt_right']=='Supeditado a las  condiciones  contextuales','opt_right'] = 'Supeditado a las condiciones contextuales'
+    df.loc[df['opt_right']=='Los plazos  acordados del  proyecto'] = 'Los plazos acordados del proyecto'
+
+    df = df[df['opt_right'] != df['opt_left']]
+
+    return df
+
+
+def procesar_julieta(df):
+    # procesamiento especial caso Julieta
+    df.loc[df['opt_left']=='Usar la información del grupo de WhatsApp','opt_left'] = 'Usar información del grupo de WhatsApp'
+
+    df.loc[df['opt_right']=='No usar la información del  grupo de WhatsApp','opt_right'] = 'No usar la información del grupo de WhatsApp'
+
+    return df
+
+
 class StemmerTokenizer:
     def __init__(self,stem=True,rmv_punctuation=False):
         self.stem = stem
