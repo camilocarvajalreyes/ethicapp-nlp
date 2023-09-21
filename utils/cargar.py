@@ -97,3 +97,13 @@ def fase(df:pd.DataFrame,fase:int,caso:str) -> pd.DataFrame:
             condition_df.append(df.loc[(df['phase'] == indice) & (df['curso'] == curso)])
     
     return pd.concat(condition_df)
+
+
+def columna_fase(df:pd.DataFrame,caso:str) -> pd.DataFrame:
+    """Agrega la columna fase al DF. No optimizada"""
+    new_df = df.copy()
+    new_df['etapa'] = None
+    for etapa in ['Ind1','Grup','Ind2']:
+        df_caso = fase(df,etapa,caso)
+        new_df.loc[new_df.index.isin(df_caso.index), 'etapa'] = etapa
+    return new_df
