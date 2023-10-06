@@ -49,7 +49,7 @@ def iteraciones_datamap(nombre):
     return iteraciones
 
 
-def df_caso(nombre:str,chat=False) -> pd.DataFrame:
+def df_caso(nombre:str,chat=False,seccion=False,verbose=False) -> pd.DataFrame:
     """
     Retorna un dataframe de pandas con todos los contenidos del caso en cuestión
 
@@ -57,6 +57,14 @@ def df_caso(nombre:str,chat=False) -> pd.DataFrame:
     
         nombre: str
             nombre del caso, uno entre: 'adela', 'alicia', 'julieta' y 'laura'
+
+        chat: bool, default = False
+            If True retorna un dataframe con los chats disponibles para el caso
+
+        seccion: bool, default = False
+            If True el dataframe contiene una columna con la seccion
+        verbose: bool, default = False
+            If True imprime las secciones encontradas
         
     Retorna
 
@@ -65,6 +73,8 @@ def df_caso(nombre:str,chat=False) -> pd.DataFrame:
     """
     iteraciones = iteraciones_datamap(nombre)
     dfs = []
+    if verbose:
+        print("Secciones encontradas:")
     for curso in iteraciones:
             if chat:
                 folder = datamap['parent']+curso+'/chat/'
@@ -77,8 +87,15 @@ def df_caso(nombre:str,chat=False) -> pd.DataFrame:
                 files = files_in_folder(folder)
             for file in  files:
                 df = pd.read_csv(folder + file, delimiter=';',index_col='id')
+                if verbose:
+                    print('\t',file)
+                elms = file.split('.')
+                seccion = int(elms[2])
                 df['curso'] = curso
+                df['seccion'] = seccion
                 dfs.append(df)
+    if verbose:
+        print('\n')
     df = pd.concat(dfs)
     df = df.drop(columns=['name','rut'])
 
