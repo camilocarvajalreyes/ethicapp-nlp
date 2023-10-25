@@ -22,3 +22,4 @@ Se muestran los Notebooks para los modelos relevantes para el caso Adela.
 - [Modelo de clasificación Naive-Bayes](naive-bayes/NB_adela.ipynb)
 - [Modelo de tópicos LDA](topic-modelling/TM_adela.ipynb)
 - [Modelo de tópicos BERTopic](topic-modelling/BT_adela.ipynb)
+- [Modelos lineales](modelos-lineales/lineal_adela.ipynb)
