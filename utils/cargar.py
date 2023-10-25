@@ -76,24 +76,26 @@ def df_caso(nombre:str,chat=False,seccion=False,verbose=False) -> pd.DataFrame:
     if verbose:
         print("Secciones encontradas:")
     for curso in iteraciones:
-            if chat:
-                folder = datamap['parent']+curso+'/chat/'
-            else:
-                folder = datamap['parent']+curso+'/'
-            try:
-                files = files_in_folder(folder)
-            except FileNotFoundError:
-                folder = '../' + folder
-                files = files_in_folder(folder)
-            for file in  files:
-                df = pd.read_csv(folder + file, delimiter=';',index_col='id')
-                if verbose:
-                    print('\t',file)
-                elms = file.split('.')
-                seccion = int(elms[2])
-                df['curso'] = curso
-                df['seccion'] = seccion
-                dfs.append(df)
+        if chat:
+            folder = datamap['parent']+curso+'/chat/'
+        else:
+            folder = datamap['parent']+curso+'/'
+        try:
+            files = files_in_folder(folder)
+            if files == []:
+                raise FileNotFoundError
+        except FileNotFoundError:
+            folder = '../' + folder
+            files = files_in_folder(folder)
+        for file in  files:
+            df = pd.read_csv(folder + file, delimiter=';',index_col='id')
+            if verbose:
+                print('\t',file)
+            elms = file.split('.')
+            seccion = int(elms[2])
+            df['curso'] = curso
+            df['seccion'] = seccion
+            dfs.append(df)
     if verbose:
         print('\n')
     df = pd.concat(dfs)
