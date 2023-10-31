@@ -39,12 +39,13 @@ class HighlightedText:
                 coloured_tokens.append(token)
         return ' '.join(coloured_tokens)
     
-    def render(self,filename='visualisation.html'):
+    def render(self,filename='visualisation.html',save_file=False):
         html = """<!DOCTYPE html>\n<html>\n<head>\n\t<style>\n\t\t.centered-text {text-align: center;}\n\t\t.large-text { font-size: 24px; }
         \t</style>\n</head>\n<body>\n\t<div class="centered-text">\n\t\t<p class="large-text">REPLACE_WITH_TEXT</p>\n\t</div>\n</body>\n</html>"""
         html = html.replace('REPLACE_WITH_TEXT',self.text_html())
-        with open(filename, 'w') as file:
-            file.write(html)
+        if save_file:
+            with open(filename, 'w') as file:
+                file.write(html)
         return html
         
 
@@ -59,8 +60,8 @@ class Palette:
     def get_partition_index(self, x):
         n = self.__len__()
 
-        if x < -1 or x > 1:
-            return "Number is out of range [-1, 1]"
+        # if x < -1 or x > 1:
+        #     return "Number is out of range [-1, 1]"
         
         segment_size = 2 / n  # Calculate the size of each segment
         partition = [-1 + i * segment_size for i in range(n + 1)]
