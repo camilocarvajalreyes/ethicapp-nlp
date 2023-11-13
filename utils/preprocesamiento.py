@@ -171,6 +171,7 @@ def make_BoW_preprocess(tokenizer:StemmerTokenizer,column:str,max_ngram:int=2,mi
         ngram_range=(min_ngram,max_ngram),
         min_df = mindf,
         max_df = maxdf,
+        token_pattern = None,
         )
 
     preprocessing = ColumnTransformer(
