@@ -1,4 +1,6 @@
 parent: datos_EthicApp/
+amanda:
+  - 2023.CD1201
 laura:
   - 2020.CD2201
 julieta:
@@ -10,6 +12,14 @@ adela:
   - 2021.CD2201
   - 2022.CD1201
   - 2023.CD1100
+amanda_fases:
+  - 2023.CD1201:
+    - Ind1:
+      - 2
+    - Grup:
+      - 3
+    - Ind2:
+      - 4
 laura_fases:
   - 2020.CD2201:
     - Ind1:
